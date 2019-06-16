@@ -1,0 +1,143 @@
+@import "../../assets/styles/general";
+@import "../../assets/styles/mixins";
+
+.header {
+  background-color: $white;
+  height: 18rem;
+
+  &__wrapper {
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    height: 5rem;
+    padding: 0.5rem;
+  }
+
+  &__left {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    &__how-it-works {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      // margin-right: 0 10rem;
+      &::after {
+        margin-top: 0.5rem;
+        content: "Ajuda";
+      }
+
+      @include lg {
+        flex-direction: row;
+        &::after {
+          content: "";
+        }
+      }
+
+      .text {
+        display: none;
+        margin: 0 0.5rem;
+
+        @include lg {
+          display: block;
+        }
+      }
+    }
+
+    &__contact {
+      display: none;
+      margin: 0 1rem;
+
+      @include lg {
+        display: flex;
+        flex-direction: row;
+        &::before {
+          content: "";
+          height: 30px;
+          width: 3px;
+          background: $sencondaryGray;
+          margin-right: 2rem;
+        }
+      }
+
+      &__number {
+        display: flex;
+        flex-direction: column;
+        margin: 0 0.5rem;
+      }
+    }
+  }
+
+  &__logo {
+    // flex-grow: 1;
+    margin: 0 5rem;
+
+    &__img {
+      height: 2.5rem;
+    }
+  }
+
+  &__account {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    &::after {
+      margin-top: 0.5rem;
+      content: "Conta";
+    }
+
+    @include lg {
+      flex-direction: row;
+      &::after {
+        content: "";
+      }
+    }
+
+    .text {
+      display: none;
+      margin: 0 0.5rem;
+      @include lg {
+        display: block;
+      }
+    }
+  }
+
+  &__nav {
+    background-color: $primaryBlue;
+    padding: 1rem 0;
+
+    .nav__list {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      list-style-type: none;
+
+      @include lg {
+        justify-content: flex-start;
+      }
+    }
+
+    .nav__item {
+      margin: 0 1rem;
+
+      display: none;
+      &:first-child {
+        display: flex;
+      }
+
+      &--mobile {
+        display: flex;
+        @include lg {
+          display: none;
+        }
+      }
+    }
+  }
+}

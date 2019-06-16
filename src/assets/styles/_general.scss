@@ -1,0 +1,24 @@
+$white: #fff;
+$primaryBlue: #18acc4;
+$secondaryBlue: #007a8d;
+$primaryYellow: #fdcb13;
+$secondaryYellow: #de9e1f;
+$green: #0fa866;
+$blackText: #1f2d30;
+$primaryGray: #fbfbfb;
+$sencondaryGray: #F0F0F0;
+$modalOverlay: #1f2d30;
+
+.text {
+  &--primary {
+    color: $primaryBlue;
+  }
+
+  &--s {
+    font-size: 0.85rem;
+  }
+
+  &--xs {
+    font-size: 0.65rem;
+  }
+}

@@ -1,28 +1,60 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+    <Header/>
+    <!-- <FavScholarship /> -->
+    <!-- <NewScholarship/> -->
+    <Footer/>
   </div>
 </template>
+<style lang="scss">
+@import "./assets/styles/general.scss";
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: 0;
+  font-family: "Montserrat";
+}
+html,
+body,
+#app {
+  overflow-x: hidden;
+   font-size: 100%;
+
+  color: $blackText;
+  /* font-size: 62.5%;
+    @media (max-width: $tablet) { font-size: 58.5%; }
+    @media (max-width: $mobile) { font-size: 52.5%; } */
+}
+
+/* #app {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+} */
+</style>
+<style>
+@font-face {
+  font-family: "Montserrat";
+  src: url("~@/assets/fonts/Montserrat-SemiBold.ttf") format("truetype");
+}
+</style>
+
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
+import Header from "./components/header/Header.vue";
+import Footer from "./components/footer/Footer.vue";
+import FavScholarship from "./components/favScholarship/FavScholarship.vue";
+import NewScholarship from "./components/newScholarship/NewScholarship.vue";
 
 export default {
   name: "app",
   components: {
-    HelloWorld
+    Header,
+    Footer,
+    FavScholarship,
+    NewScholarship
   }
 };
 </script>
-
-<style>
-#app {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>

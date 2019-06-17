@@ -19,6 +19,7 @@ html,
 body,
 #app {
   overflow-x: hidden;
+  height: 100%;
   /* font-size: 100%;
   display: flex;
   flex-direction: column;

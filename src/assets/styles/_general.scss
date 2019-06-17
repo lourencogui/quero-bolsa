@@ -13,12 +13,17 @@ $modalOverlay: #1f2d30;
   &--primary {
     color: $primaryBlue;
   }
-
+  
+  &--light {
+    color: $white;
+  }
+  
   &--s {
-    font-size: 0.85rem;
+    font-size: 0.8rem;
   }
 
   &--xs {
-    font-size: 0.65rem;
+    font-size: 0.7rem;
   }
+
 }

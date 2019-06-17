@@ -6,14 +6,22 @@
   flex-direction: column;
   background: $primaryBlue;
   bottom: 0;
+  height: 20rem;
+
+  @include lg {
+    height: 9rem;
+  }
 
   &__top {
     display: flex;
-    flex: 3;
+    // flex: 1;
+    background: $secondaryBlue;
     justify-content: center;
     align-items: center;
     flex-direction: row;
     flex-wrap: wrap;
+    height: 50%;
+
     @include lg {
       flex: 1;
       flex-wrap: nowrap;
@@ -22,24 +30,62 @@
 
     &__box {
       display: flex;
-      flex: 1;
-      flex-direction: row;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
-      padding: 1rem 2.5rem;
-      // flex-wrap: wrap;
-      // height: 10rem;
+      padding: 1rem 1.5rem;
+      width: 33.3%;
+      @include lg {
+        flex-direction: row;
+      }
 
-      // &__info {
-      //   display: flex;
-      //   flex: 1;
-      //   flex-direction: column;
-      //   flex-wrap: nowrap;
-      // }
+      &--grow {
+        flex-direction: row;
+        @include lg {
+          width: 33%;
+        }
+        width: 100%;
+      }
 
-      // &--grow {
-      //   flex-grow: 1;
-      // }
+      &__info {
+        display: none;
+        flex-direction: column;
+        margin: 0 0.5rem;
+
+        @include lg {
+          display: flex;
+        }
+
+        &--grow {
+          display: flex;
+          flex-direction: column;
+        }
+
+        &--wrap {
+          @include lg {
+            display: none;
+          }
+          margin: 0.5rem 0;
+        }
+
+        // &--mobile {
+        //   display: flex;
+        //   flex: 1;
+        //   flex-direction: column;
+        //   justify-content: center;
+        //   @include lg {
+        //     display: none;
+        //   }
+        // }
+      }
     }
+  }
+
+  &__bottom {
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
 }

@@ -7,13 +7,23 @@ $green: #0fa866;
 $blackText: #1f2d30;
 $primaryGray: #fbfbfb;
 $secondaryGray: #F0F0F0;
+$dark: #7d7d7d;
+$bgDark: #fafaf9;
 $modalOverlay: #1f2d30;
 
 .text {
   &--primary {
     color: $primaryBlue;
   }
+
+  &--secondary {
+    color: $secondaryBlue;
+  }
   
+  &--bold {
+    font-weight: bold;
+  }
+
   &--light {
     color: $white;
   }

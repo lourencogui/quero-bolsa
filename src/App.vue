@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <Header/>
-    <!-- <FavScholarship /> -->
+    <FavScholarship />
     <!-- <NewScholarship/> -->
     <Footer/>
   </div>
@@ -20,6 +20,7 @@ body,
 #app {
   overflow-x: hidden;
   height: 100%;
+  background: "##fafaf9";
   /* font-size: 100%;
   display: flex;
   flex-direction: column;

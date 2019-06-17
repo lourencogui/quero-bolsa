@@ -21,11 +21,7 @@ body,
   overflow-x: hidden;
   height: 100%;
   background: "##fafaf9";
-  /* font-size: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: stretch; */
+  /* font-size: 85%; */
 
   color: $blackText;
   /* font-size: 62.5%; */

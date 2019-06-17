@@ -1,37 +1,40 @@
 <template>
-  <div>
-    <div>
-      <div>
-        <i>ICONE UNIVERSIDADE</i>
+  <div class="scholarship">
+    <div class="scholarship__university">
+      <i class="scholarship__university__logo">
+        <img src="https://anhanguera.com/assets/img/favicon-32x32.png">
+      </i>
+      <div class="scholarship__university__description">
+        <h2>ANHANGUERA</h2>
+        <strong class="text--primary">Arquitetura e urbanismo</strong>
         <div>
-          <h2>ANHANGUERA</h2>
-          <h2>Arquitetura e urbanismo</h2>
-          <div>
-            <h2>3.8</h2>
-            <!-- rating -->
-          </div>
-        </div>
-      </div>
-      <div>
-        <h2>PRESENCIAL - NOITE</h2>
-        <strong>Inicio das aulas em: 05/07/2019</strong>
-      </div>
-      <div>
-        <h2>Mensalidade com o Quero Bolsa:</h2>
-        <strike>RS 1.500</strike>
-        <div>
-          <strong>RS 453</strong>
-          <p>/mes</p>
+          <h2>3.8</h2>
+          <!-- rating -->
         </div>
       </div>
     </div>
-    <!-- favScholarshipFooter -->
-    <div>
-      <button name="button">Excluir</button>
-      <button name="button">Ver oferta</button>
+    <div class="scholarship__university__period">
+      <h2>PRESENCIAL - NOITE</h2>
+      <strong class="text--s">Inicio das aulas em: 05/07/2019</strong>
+    </div>
+    <div class="scholarship__university__price">
+      <h2>Mensalidade com o Quero Bolsa:</h2>
+      <strike class="text--s">RS 1.500</strike>
+      <div class="scholarship__university__price__month">
+        <strong class="text--green">RS 453</strong>
+        <p>/mes</p>
+      </div>
+    </div>
+    <div class="scholarship__university__options">
+      <button class="scholarship__university__options__button scholarship__university__options__button--outline" name="button">Excluir</button>
+      <button class="scholarship__university__options__button scholarship__university__options__button--yellow" name="button">Ver oferta</button>
     </div>
   </div>
 </template>
+<style lang="scss" scoped>
+@import "./_favScholarshipItem.scss";
+</style>
+
 
 <script>
 export default {

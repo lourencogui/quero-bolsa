@@ -35,9 +35,10 @@
         </div>
         <div class="scholarships__new__info">
           <h2>Adicionar bolsa</h2>
-          <p>Clique para adicionar bolsas de cursos do seu interesse</p>
+          <strong>Clique para adicionar bolsas de cursos do seu interesse</strong>
         </div>
       </div>
+      <FavScholarshipItem/>
     </div>
   </div>
 </template>

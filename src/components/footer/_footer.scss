@@ -1,0 +1,45 @@
+@import "../../assets/styles/general";
+@import "../../assets/styles/mixins";
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  background: $primaryBlue;
+  bottom: 0;
+
+  &__top {
+    display: flex;
+    flex: 3;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    @include lg {
+      flex: 1;
+      flex-wrap: nowrap;
+      // flex-direction: row;
+    }
+
+    &__box {
+      display: flex;
+      flex: 1;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      padding: 1rem 2.5rem;
+      // flex-wrap: wrap;
+      // height: 10rem;
+
+      // &__info {
+      //   display: flex;
+      //   flex: 1;
+      //   flex-direction: column;
+      //   flex-wrap: nowrap;
+      // }
+
+      // &--grow {
+      //   flex-grow: 1;
+      // }
+    }
+  }
+}

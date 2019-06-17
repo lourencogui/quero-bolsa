@@ -19,20 +19,17 @@ html,
 body,
 #app {
   overflow-x: hidden;
-   font-size: 100%;
-
-  color: $blackText;
-  /* font-size: 62.5%;
-    @media (max-width: $tablet) { font-size: 58.5%; }
-    @media (max-width: $mobile) { font-size: 52.5%; } */
-}
-
-/* #app {
+  /* font-size: 100%;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  align-items: stretch;
-} */
+  align-items: stretch; */
+
+  color: $blackText;
+  /* font-size: 62.5%; */
+  /* @media (max-width: $tablet) { font-size: 58.5%; }
+    @media (max-width: $mobile) { font-size: 52.5%; } */
+}
 </style>
 <style>
 @font-face {

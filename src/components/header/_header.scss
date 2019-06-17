@@ -9,10 +9,14 @@
     display: flex;
     flex: 1;
     flex-direction: row;
-    justify-content: space-around;
+    @include lg {
+      justify-content: space-around;
+      padding: 0;
+    }
+    justify-content: space-between;
     align-items: center;
     height: 5rem;
-    padding: 0.5rem;
+    padding: 1rem;
   }
 
   &__left {
@@ -60,7 +64,7 @@
           content: "";
           height: 30px;
           width: 3px;
-          background: $sencondaryGray;
+          background: $secondaryGray;
           margin-right: 2rem;
         }
       }
@@ -111,7 +115,6 @@
 
   &__nav {
     background-color: $primaryBlue;
-    padding: 1rem 0;
 
     .nav__list {
       display: flex;
@@ -126,17 +129,38 @@
 
     .nav__item {
       margin: 0 1rem;
-
       display: none;
+      height: 2.5rem;
+
+      @include lg {
+        display: flex;
+      }
+
       &:first-child {
         display: flex;
       }
 
       &--mobile {
         display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
         @include lg {
           display: none;
         }
+      }
+
+      &--active {
+        @include lg {
+          background: $secondaryBlue;
+        }
+      }
+
+      &__page {
+        align-self: center;
+        color: $white;
+        text-decoration: none;
+        padding: 0 1rem;
       }
     }
   }

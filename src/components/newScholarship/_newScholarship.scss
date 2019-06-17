@@ -1,0 +1,32 @@
+@import "../../assets/styles/general";
+@import "../../assets/styles/mixins";
+
+
+.container {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: $modalOverlay;
+  z-index: 10;
+  visibility: visible;
+  &--hidden {
+    visibility: hidden;
+    height: 0;
+    width: 0;
+  }
+}
+.modal {
+  background: $white;
+  padding: 1.5rem;
+}
+.title {
+  display: flex;
+  flex-direction: column;
+
+}

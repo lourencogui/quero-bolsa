@@ -1,6 +1,6 @@
 <template>
-  <div class="container">
-    <div class="close">
+  <div :class="`container__modal  ${!visible && 'container__modal--hidden'}`">
+    <div class="close" @click="changeVisibility()">
       <font-awesome-icon icon="times" color="#FFF" size="lg"/>
     </div>
     <div class="modal">
@@ -102,6 +102,16 @@ export default {
   components: {
     NewScholarshipItem,
     VueSlider
+  },
+  data() {
+    return {
+      visible: false
+    };
+  },
+  methods: {
+    changeVisibility () {
+      this.visible = !this.visible;
+    }
   }
 };
 </script>

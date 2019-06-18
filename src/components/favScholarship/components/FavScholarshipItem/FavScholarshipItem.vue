@@ -9,7 +9,7 @@
         <strong class="text--primary">Arquitetura e urbanismo</strong>
         <div class="scholarship__university__description__rating">
           <h2>3.8</h2>
-          <star-rating star-size="20"></star-rating>
+          <star-rating read-only star-size="20"></star-rating>
         </div>
       </div>
     </div>
@@ -48,7 +48,7 @@ import StarRating from "vue-star-rating";
 export default {
   name: "FavScholarshipItem",
   components: {
-    StarRating,
+    StarRating
   }
 };
 </script>

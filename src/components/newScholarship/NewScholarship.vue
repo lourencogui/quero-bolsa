@@ -1,5 +1,8 @@
 <template>
   <div class="container">
+    <div class="close">
+      <font-awesome-icon icon="times" color="#FFF" size="lg"/>
+    </div>
     <div class="modal">
       <div class="title">
         <h2>Adicionar bolsa</h2>

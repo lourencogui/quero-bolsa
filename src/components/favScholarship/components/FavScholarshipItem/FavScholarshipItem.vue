@@ -7,9 +7,9 @@
       <div class="scholarship__university__description">
         <h2>ANHANGUERA</h2>
         <strong class="text--primary">Arquitetura e urbanismo</strong>
-        <div>
+        <div class="scholarship__university__description__rating">
           <h2>3.8</h2>
-          <!-- rating -->
+          <star-rating star-size="20"></star-rating>
         </div>
       </div>
     </div>
@@ -26,8 +26,14 @@
       </div>
     </div>
     <div class="scholarship__university__options">
-      <button class="scholarship__university__options__button scholarship__university__options__button--outline" name="button">Excluir</button>
-      <button class="scholarship__university__options__button scholarship__university__options__button--yellow" name="button">Ver oferta</button>
+      <button
+        class="scholarship__university__options__button scholarship__university__options__button--outline"
+        name="button"
+      >Excluir</button>
+      <button
+        class="scholarship__university__options__button scholarship__university__options__button--yellow"
+        name="button"
+      >Ver oferta</button>
     </div>
   </div>
 </template>
@@ -37,7 +43,12 @@
 
 
 <script>
+import StarRating from "vue-star-rating";
+
 export default {
-  name: "FavScholarshipItem"
+  name: "FavScholarshipItem",
+  components: {
+    StarRating,
+  }
 };
 </script>

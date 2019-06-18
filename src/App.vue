@@ -2,7 +2,7 @@
   <div id="app">
     <Header/>
     <FavScholarship />
-    <NewScholarship/>
+    <!-- <NewScholarship/> -->
     <Footer/>
   </div>
 </template>

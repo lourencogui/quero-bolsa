@@ -6,12 +6,13 @@ $secondaryYellow: #de9e1f;
 $green: #0fa866;
 $blackText: #1f2d30;
 $primaryGray: #fbfbfb;
-$secondaryGray: #F0F0F0;
+$secondaryGray: #f0f0f0;
 $dark: #7d7d7d;
 $bgDark: #fafaf9;
-$modalOverlay:rgba(31,45,48, 0.8);
+$modalOverlay: rgba(31, 45, 48, 0.8);
 
 .text {
+  
   &--primary {
     color: $primaryBlue;
   }
@@ -23,7 +24,7 @@ $modalOverlay:rgba(31,45,48, 0.8);
   &--green {
     color: $green;
   }
-  
+
   &--bold {
     font-weight: bold;
   }
@@ -31,7 +32,9 @@ $modalOverlay:rgba(31,45,48, 0.8);
   &--light {
     color: $white;
   }
-  
+
+
+
   &--s {
     font-size: 0.8rem;
   }
@@ -40,4 +43,48 @@ $modalOverlay:rgba(31,45,48, 0.8);
     font-size: 0.7rem;
   }
 
+  &--m {
+    font-size: 1rem;
+  }
 }
+
+.select {
+  height: 2.2rem;
+  border-radius: 3px;
+  border: 2px solid $secondaryGray;
+
+  &--text {
+    border: 0;
+    color: $secondaryBlue;
+  }
+}
+
+.checkbox {
+  margin-right: 0.5rem;
+}
+
+// .button {
+//   // align-items: center;
+//   height: 3rem;
+//   padding: 0.2rem 1em;
+//   // width: 100%;
+//   // margin: 0 0.5rem;
+//   border-radius: 3px;
+ 
+//   &--outline {
+//     background: transparent;
+//     border: 2px solid $primaryBlue;
+//     flex: 1;
+//   }
+
+//   &--yellow {
+//     flex: 2;
+//     background: $primaryYellow;
+//     border: 2px solid $secondaryYellow;
+//   }
+
+//   &--disabled {
+//     flex: 2;
+//     background: $secondaryGray;
+//   }
+// }

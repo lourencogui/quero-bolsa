@@ -1,0 +1,60 @@
+@import "../../../assets/styles/general";
+@import "../../../assets/styles/mixins";
+
+.university__container {
+  display: flex;
+  flex-direction: column;
+  &::after {
+    content: "";
+    height: 2px;
+    width: 100%;
+    background: $secondaryGray;
+    margin-right: 2rem;
+  }
+
+  &:first-child {
+    &::before {
+      content: "";
+      height: 2px;
+      width: 100%;
+      background: $secondaryGray;
+      margin-right: 2rem;
+    }
+  }
+}
+
+.university {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 1rem 0;
+
+  &__item {
+    flex-direction: row;
+    padding: 0 1rem;
+    @include lg {
+      justify-content: space-between;
+    }
+
+    &--block {
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+
+      @include lg {
+        flex-direction: row;
+      }
+    }
+  }
+}
+
+.item__course {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0.5rem 0;
+  @include lg {
+    padding: 0;
+  }
+}

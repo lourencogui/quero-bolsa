@@ -1,7 +1,6 @@
 @import "../../assets/styles/general";
 @import "../../assets/styles/mixins";
 
-
 .container {
   position: fixed;
   top: 0;
@@ -24,9 +23,159 @@
 .modal {
   background: $white;
   padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  @include lg {
+    width: 50rem;
+  }
 }
 .title {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
 
+.filter {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+
+  &__checkbox--label {
+    font-size: 0.8rem;
+  }
+
+  &__checkbox--input {
+    background-color: transparent;
+    cursor: pointer;
+  }
+
+  &__top {
+    display: flex;
+    flex-direction: column;
+    @include lg {
+      flex-direction: row;
+    }
+
+    &__item {
+      display: flex;
+      flex-direction: column;
+      margin: 1rem 0;
+      @include lg {
+        width: 50%;
+        &:first-child {
+          padding-right: 1rem;
+        }
+      }
+    }
+  }
+
+  &__bottom {
+    display: flex;
+    flex-direction: column;
+
+    @include lg {
+      flex-direction: row;
+      align-items: flex-start;
+    }
+
+    &__type {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      margin: 1rem 0;
+      @include lg {
+        margin: 0;
+        width: 50%;
+        // margin: 1rem;
+
+        &:first-child {
+          padding-right: 1rem;
+        }
+      }
+      &__options {
+        display: flex;
+        flex-direction: row;
+
+        &__checkbox {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          margin-right: 1rem;
+          margin-top: 1rem;
+        }
+      }
+    }
+
+    &__price {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+}
+
+.sort {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 1rem;
+
+  &__left {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+  }
+}
+
+.results {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  // align-items: center;
+  width: 100%;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: center;
+  @include lg {
+    justify-content: flex-end;
+  }
+  margin-top: 1rem;
+  height: 3rem;
+  border-radius: 3px;
+
+  &__item {
+    &--outline {
+      background: transparent;
+      border: 2px solid $primaryBlue;
+      flex: 1;
+      margin-right: 1rem;
+    }
+
+    &--yellow {
+      flex: 2;
+      background: $primaryYellow;
+      border: 2px solid $secondaryYellow;
+    }
+
+    &--disabled {
+      flex: 2;
+      background: $secondaryGray;
+    }
+
+    border-radius: 3px;
+    padding: 0 1rem;
+    @include lg {
+      flex: none;
+    }
+  }
 }

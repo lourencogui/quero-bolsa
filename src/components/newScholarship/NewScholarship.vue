@@ -2,68 +2,84 @@
   <div class="container">
     <div class="modal">
       <div class="title">
-        <h1>Adicionar bolsa</h1>
-        <p>Filtre e adicione as bolsas de seu interesse.</p>
+        <h2>Adicionar bolsa</h2>
+        <p class="text--s">Filtre e adicione as bolsas de seu interesse.</p>
       </div>
-      <!-- FILTROS -->
       <div class="filter">
-        <!-- SELECTS -->
         <div class="filter__top">
-          <div class="filter__top__city">
-            <p>SELECIONE SUA CIDADE</p>
-            <select>
-              <option>São josé dos Campos</option>
+          <div class="filter__top__item">
+            <label class="text--s">SELECIONE SUA CIDADE</label>
+            <select class="select">
+              <option>São José dos Campos</option>
             </select>
           </div>
-          <div class="filter__top__course">
-            <p>SELECIONE O CURSO DE SUA PREFERÊNCIA</p>
-            <select>
+          <div class="filter__top__item">
+            <label class="text--s">SELECIONE O CURSO DE SUA PREFERÊNCIA</label>
+            <select class="select">
               <option>Engenharia da computação</option>
             </select>
           </div>
         </div>
-        <!-- CHKS E SLIDER -->
         <div class="filter__bottom">
-          <div class="filter_bottom__type">
-            <p>COMO VOCÊ QUER ESTUDAR?</p>
+          <div class="filter__bottom__type">
             <div>
-              <input type="check">
-              <input type="check">
+              <label class="text--s">COMO VOCÊ QUER ESTUDAR?</label>
+            </div>
+            <div class="filter__bottom__type__options">
+              <div class="filter__bottom__type__options__checkbox">
+                <input
+                  class="filter__checkbox--input checkbox"
+                  type="checkbox"
+                  value="Presencial"
+                  id="chk-presential"
+                  v-model="filterPresential"
+                  v-on:change="changeFilter('filterPresential', filterPresential)"
+                >
+                <label class="filter__checkbox--label" for="chk-presential">Presencial</label>
+              </div>
+              <div class="filter__bottom__type__options__checkbox">
+                <input
+                  class="filter__checkbox--input"
+                  type="checkbox"
+                  value="A distância"
+                  id="chk-ead"
+                  v-model="filterPresential"
+                  v-on:change="changeFilter('filterPresential', filterPresential)"
+                >
+                <label class="filter__checkbox--label" for="chk-ead">A distância</label>
+              </div>
             </div>
           </div>
-
           <div class="filter__bottom__price">
-            <div>
-              <p>ATÉ QUANTO PODE PAGAR?</p>
-              <p>R$ 10.000</p>
+            <div class="filter__bottom__price__options">
+              <p class="text--s">ATÉ QUANTO PODE PAGAR?</p>
+              <p class="text--s">R$ 10.000</p>
             </div>
             <div>
-              <input type="checkbox">
-              <input type="range">
+              <VueSlider :dotSize="25"/>
             </div>
           </div>
         </div>
       </div>
-      <!-- ORDER BY -->
-      <div>
-        <div>
+      <div class="sort">
+        <div class="sort__right">
           <p>Resultado:</p>
         </div>
-        <div>
+        <div class="sort__left">
           <p>Ordenar por:</p>
-          <select>
+          <select class="select select--text">
             <option>NOME DA FACULDADE</option>
           </select>
         </div>
       </div>
-      <!-- SCHOLARSHIPS -->
-      <div>
+      <div class="results">
         <NewScholarshipItem/>
+        <NewScholarshipItem/>
+        <!-- <NewScholarshipItem/> -->
       </div>
-      <!-- FOOTER -->
-      <div>
-        <button name="cancel">Cancelar</button>
-        <button name="add">Adicionar bolsa(s)</button>
+      <div class="buttons">
+        <button class="buttons__item buttons__item--outline" name="cancel">Cancelar</button>
+        <button class="buttons__item buttons__item--yellow" name="add">Adicionar bolsa(s)</button>
       </div>
     </div>
   </div>
@@ -75,11 +91,14 @@
 
 
 <script>
-import { NewScholarshipItem } from "./newScholarshipItem/NewScholarshipItem.vue";
+import NewScholarshipItem from "./newScholarshipItem/NewScholarshipItem.vue";
+import VueSlider from "vue-slider-component";
+import "vue-slider-component/theme/antd.css";
 export default {
   name: "newScholarship",
   components: {
-    NewScholarshipItem
+    NewScholarshipItem,
+    VueSlider
   }
 };
 </script>

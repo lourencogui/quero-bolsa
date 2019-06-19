@@ -74,7 +74,7 @@
                 :dotSize=25
                 :max=10000
                 :interval=100
-                :value=10000
+                :value=0
                 @change="value => filterScholarships('price', value)"
               />
             </div>
@@ -159,6 +159,12 @@ export default {
     },
     filterRules(item) {
       const { city, course, ead, presential, price } = this.filter;
+
+      console.log({ city, course, ead, presential, price });
+      console.log(item.campus.city);
+      console.log(item.course.name);
+      console.log(item.course.kind);
+      console.log(item.price_with_discount);
 
       if (city && city !== item.campus.city && city.toUpperCase() !== "TODOS") {
         return false;

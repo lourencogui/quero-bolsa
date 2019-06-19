@@ -35,14 +35,14 @@
                 class="filter__bottom__type__options__checkbox"
                 @click="filterScholarships('presential', !filter.presential)"
               >
-                <font-awesome-icon :icon="filter.presential ? 'check' : 'square'" color="#007a8d"/>
+                <input class="checkbox" type="checkbox">
                 <span class="text--s">Presencial</span>
               </div>
               <div
                 class="filter__bottom__type__options__checkbox"
                 @click="filterScholarships('ead', !filter.ead)"
               >
-                <font-awesome-icon :icon="filter.ead ? 'check' : 'square'" color="#007a8d"/>
+                <input class="checkbox" type="checkbox">
                 <span class="text--s">A distância</span>
               </div>
             </div>
@@ -54,10 +54,10 @@
             </div>
             <div>
               <VueSlider
-                :dotSize=25
-                :max=10000
-                :interval=100
-                :value=0
+                :dotSize="25"
+                :max="10000"
+                :interval="100"
+                :value="0"
                 @change="value => filterScholarships('price', value)"
               />
             </div>
@@ -84,7 +84,11 @@
         />
       </div>
       <div class="buttons">
-        <button @click="changeVisibility" class="buttons__item buttons__item--outline" name="cancel">Cancelar</button>
+        <button
+          @click="changeVisibility"
+          class="buttons__item buttons__item--outline"
+          name="cancel"
+        >Cancelar</button>
         <button
           v-if="selectedScholarships.length === 0"
           class="buttons__item buttons__item--disabled"
@@ -190,7 +194,10 @@ export default {
       }
     },
     addFavorites() {
-      this.$emit("addFavorites", [this.selectedScholarships, this.scholarships]);
+      this.$emit("addFavorites", [
+        this.selectedScholarships,
+        this.scholarships
+      ]);
     }
   }
 };

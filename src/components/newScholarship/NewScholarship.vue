@@ -71,10 +71,10 @@
             </div>
             <div>
               <VueSlider
-                :dotSize=25
-                :max=10000
-                :interval=100
-                :value=0
+                :dotSize="25"
+                :max="10000"
+                :interval="100"
+                :value="10000"
                 @change="value => filterScholarships('price', value)"
               />
             </div>
@@ -97,12 +97,22 @@
           :key="scholarship.id"
           v-for="scholarship in filteredScholarships"
           :item="scholarship"
+          v-on:selectItem="selectItem"
         />
-        <!-- <NewScholarshipItem/> -->
       </div>
       <div class="buttons">
         <button class="buttons__item buttons__item--outline" name="cancel">Cancelar</button>
-        <button class="buttons__item buttons__item--yellow" name="add">Adicionar bolsa(s)</button>
+        <button
+          v-if="selectedScholarships.length === 0"
+          class="buttons__item buttons__item--disabled"
+          name="add"
+        >Adicionar bolsa(s)</button>
+        <button
+          v-else
+          @click="addFavorites"
+          class="buttons__item buttons__item--yellow"
+          name="add"
+        >Adicionar bolsa(s)</button>
       </div>
     </div>
   </div>
@@ -129,6 +139,8 @@ export default {
       visible: false,
       scholarships: [],
       filteredScholarships: [],
+      selectedScholarships: [],
+      favoriteScholarships: [],
       cities: [],
       courses: [],
       filter: {
@@ -152,19 +164,10 @@ export default {
     },
     filterScholarships(prop, value) {
       this.filter[prop] = value;
-      console.log(this.filter[prop]);
-
       this.filteredScholarships = this.scholarships.filter(this.filterRules);
-      console.log(this.filteredScholarships.length);
     },
     filterRules(item) {
       const { city, course, ead, presential, price } = this.filter;
-
-      console.log({ city, course, ead, presential, price });
-      console.log(item.campus.city);
-      console.log(item.course.name);
-      console.log(item.course.kind);
-      console.log(item.price_with_discount);
 
       if (city && city !== item.campus.city && city.toUpperCase() !== "TODOS") {
         return false;
@@ -193,6 +196,28 @@ export default {
       }
 
       return true;
+    },
+    selectItem(id) {
+      if (this.selectedScholarships.filter(item => item === id) > 0) {
+        console.log("ja tem");
+        this.selectedScholarships = this.selectedScholarships.filter(
+          item => item !== id
+        );
+      } else {
+        this.selectedScholarships = [id, ...this.selectedScholarships];
+      }
+      console.log(this.selectedScholarships);
+    },
+    addFavorites() {
+      this.$emit("addFavorites", [this.selectedScholarships, this.scholarships]);
+
+      // this.selectedScholarships.forEach(selected => {
+      //   this.favoriteScholarships = [
+      //     ...this.favoriteScholarships,
+      //     this.filteredScholarships.find(item => item.id === selected)
+      //   ];
+      // });
+      // console.log(this.favoriteScholarships);
     }
   }
 };

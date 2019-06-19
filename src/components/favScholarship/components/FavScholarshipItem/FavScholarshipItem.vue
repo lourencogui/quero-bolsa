@@ -2,11 +2,11 @@
   <div class="scholarship">
     <div class="scholarship__university">
       <i class="scholarship__university__logo">
-        <img src="https://anhanguera.com/assets/img/favicon-32x32.png">
+        <img :src="item.university.logo_url">
       </i>
       <div class="scholarship__university__description">
-        <h2>ANHANGUERA</h2>
-        <strong class="text--primary">Arquitetura e urbanismo</strong>
+        <h2>{{ item.university.name}}</h2>
+        <strong class="text--primary">{{ item.course.name}}</strong>
         <div class="scholarship__university__description__rating">
           <h2>3.8</h2>
           <star-rating read-only star-size="20"></star-rating>
@@ -14,14 +14,14 @@
       </div>
     </div>
     <div class="scholarship__university__period">
-      <h2>PRESENCIAL - NOITE</h2>
-      <strong class="text--s">Inicio das aulas em: 05/07/2019</strong>
+      <h2>{{ item.course.kind }} - {{ item.course.shift}}</h2>
+      <strong class="text--s">Inicio das aulas em: {{ item.start_date}}</strong>
     </div>
     <div class="scholarship__university__price">
       <h2>Mensalidade com o Quero Bolsa:</h2>
-      <strike class="text--s">RS 1.500</strike>
+      <strike class="text--s">RS {{item.full_price}}</strike>
       <div class="scholarship__university__price__month">
-        <strong class="text--green">RS 453</strong>
+        <strong class="text--green">RS {{item.price_with_discount}}</strong>
         <p>/mes</p>
       </div>
     </div>
@@ -49,6 +49,9 @@ export default {
   name: "FavScholarshipItem",
   components: {
     StarRating
+  },
+  props: {
+    item: Object
   }
 };
 </script>

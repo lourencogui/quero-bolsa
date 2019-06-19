@@ -180,6 +180,7 @@
     &--disabled {
       flex: 2;
       background: $secondaryGray;
+      border: 2px solid $secondaryGray;
     }
 
     border-radius: 3px;

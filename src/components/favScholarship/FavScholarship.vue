@@ -35,14 +35,18 @@
             <font-awesome-icon icon="plus-circle" color="#18acc4" size="3x"/>
           </div>
           <div class="scholarships__new__info">
-            <h2>Adicionar bolsa</h2>
+            <h2>Adicionar curso</h2>
             <strong>Clique para adicionar bolsas de cursos do seu interesse</strong>
           </div>
         </div>
-        <FavScholarshipItem/>
+        <FavScholarshipItem
+          v-for="scholarShip in favoriteScholarships"
+          :key="scholarShip.id"
+          :item="scholarShip"
+        />
       </div>
     </div>
-    <NewScholarship ref="newScholarship"/>
+    <NewScholarship ref="newScholarship" v-on:addFavorites="addFavorites"/>
   </div>
 </template>
 <style lang="scss" scoped>
@@ -61,16 +65,39 @@ export default {
     FavScholarshipItem,
     NewScholarship
   },
+  data() {
+    return {
+      favoriteScholarships: []
+    };
+  },
   mounted() {
     axios
       .get("https://testapi.io/api/redealumni/scholarships")
       .then(({ data }) => {
-        this.$refs.newScholarship.setScholarships(data);
+        const ids = data.map((item, index) => ({
+          id: index,
+          ...item
+        }));
+        this.$refs.newScholarship.setScholarships(ids);
       });
   },
   methods: {
-    // addNew() {},
     openNewScholarship() {
+      this.$refs.newScholarship.changeVisibility();
+    },
+    // addFavorites(args) {
+    //   console.log(args);
+    //   console.log('asudhaushdsa');
+    // }
+    addFavorites([selectedScholarships, allScholarships]) {
+      // console.log({ selectedScholarships, allScholarships });
+      selectedScholarships.forEach(selected => {
+        this.favoriteScholarships = [
+          ...this.favoriteScholarships,
+          allScholarships.find(item => item.id === selected)
+        ];
+      });
+      console.log(this.favoriteScholarships);
       this.$refs.newScholarship.changeVisibility();
     }
   }

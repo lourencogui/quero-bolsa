@@ -1,7 +1,7 @@
 <template>
   <div class="university__container">
     <div class="university">
-      <div class="university__item">
+      <div class="university__item" @click="selectItem(item.id)">
         <input class="checkbox" type="checkbox">
       </div>
       <div class="university__item">
@@ -15,7 +15,9 @@
         <div class="item__price">
           <p class="text text--s">
             Bolsa de
-            <span class="text text--s text--green text--bold">{{ item.discount_percentage }}%</span>
+            <span
+              class="text text--s text--green text--bold"
+            >{{ item.discount_percentage }}%</span>
           </p>
           <p class="text text--s text--green text--bold">R$ {{item.price_with_discount}}/mês</p>
         </div>
@@ -32,6 +34,11 @@ export default {
   name: "newScholarshipItem",
   props: {
     item: Object
+  },
+  methods: {
+    selectItem(id) {
+      this.$emit("selectItem", id);
+    }
   }
 };
 </script>

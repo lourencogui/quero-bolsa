@@ -12,14 +12,16 @@
         <div class="filter__top">
           <div class="filter__top__item">
             <label class="text--s">SELECIONE SUA CIDADE</label>
-            <select class="select">
-              <option>São José dos Campos</option>
+            <select class="select" v-on:change="e => filterScholarships('city', e.target.value)">
+              <option>Todos</option>
+              <option v-for="(city, index) in cities" :key="index">{{ city }}</option>
             </select>
           </div>
           <div class="filter__top__item">
             <label class="text--s">SELECIONE O CURSO DE SUA PREFERÊNCIA</label>
-            <select class="select">
-              <option>Engenharia da computação</option>
+            <select class="select" v-on:change="e => filterScholarships('course', e.target.value)">
+              <option>Todos</option>
+              <option v-for="(course, index) in courses" :key="index">{{ course }}</option>
             </select>
           </div>
         </div>
@@ -29,27 +31,36 @@
               <label class="text--s">COMO VOCÊ QUER ESTUDAR?</label>
             </div>
             <div class="filter__bottom__type__options">
-              <div class="filter__bottom__type__options__checkbox">
-                <input
+              <!-- <div class="filter__bottom__type__options__checkbox"> -->
+              <!-- <input
                   class="filter__checkbox--input checkbox"
                   type="checkbox"
                   value="Presencial"
                   id="chk-presential"
-                  v-model="filterPresential"
-                  v-on:change="changeFilter('filterPresential', filterPresential)"
+                  v-on:change="filterScholarships('kind', e.target.value)"
                 >
-                <label class="filter__checkbox--label" for="chk-presential">Presencial</label>
+              <label class="filter__checkbox--label" for="chk-presential">Presencial</label>-->
+              <div
+                class="filter__bottom__type__options__checkbox"
+                @click="filterScholarships('presential', !filter.presential)"
+              >
+                <font-awesome-icon :icon="filter.presential ? 'check' : 'square'" color="#007a8d"/>
+                <span>Presencial</span>
               </div>
-              <div class="filter__bottom__type__options__checkbox">
-                <input
+              <div
+                class="filter__bottom__type__options__checkbox"
+                @click="filterScholarships('ead', !filter.ead)"
+              >
+                <font-awesome-icon :icon="filter.ead ? 'check' : 'square'" color="#007a8d"/>
+                <span>A distância</span>
+                <!-- <input
                   class="filter__checkbox--input"
                   type="checkbox"
                   value="A distância"
                   id="chk-ead"
-                  v-model="filterPresential"
-                  v-on:change="changeFilter('filterPresential', filterPresential)"
-                >
-                <label class="filter__checkbox--label" for="chk-ead">A distância</label>
+                  v-on:change="filterScholarships('kind', '')"
+                >-->
+                <!-- <label class="filter__checkbox--label" for="chk-ead">A distância</label> -->
               </div>
             </div>
           </div>
@@ -59,7 +70,13 @@
               <p class="text--s">R$ 10.000</p>
             </div>
             <div>
-              <VueSlider :dotSize="25"/>
+              <VueSlider
+                :dotSize=25
+                :max=10000
+                :interval=100
+                :value=10000
+                @change="value => filterScholarships('price', value)"
+              />
             </div>
           </div>
         </div>
@@ -76,8 +93,11 @@
         </div>
       </div>
       <div class="results">
-        <NewScholarshipItem/>
-        <NewScholarshipItem/>
+        <NewScholarshipItem
+          :key="scholarship.id"
+          v-for="scholarship in filteredScholarships"
+          :item="scholarship"
+        />
         <!-- <NewScholarshipItem/> -->
       </div>
       <div class="buttons">
@@ -96,6 +116,7 @@
 <script>
 import NewScholarshipItem from "./newScholarshipItem/NewScholarshipItem.vue";
 import VueSlider from "vue-slider-component";
+import { sortArray } from "../../assets/utils";
 import "vue-slider-component/theme/antd.css";
 export default {
   name: "newScholarship",
@@ -105,12 +126,67 @@ export default {
   },
   data() {
     return {
-      visible: false
+      visible: false,
+      scholarships: [],
+      filteredScholarships: [],
+      cities: [],
+      courses: [],
+      filter: {
+        city: "TODOS",
+        course: "TODOS",
+        ead: false,
+        presential: false,
+        price: 10000
+      }
     };
   },
   methods: {
-    changeVisibility () {
+    changeVisibility() {
       this.visible = !this.visible;
+    },
+    setScholarships(scholarships) {
+      this.scholarships = sortArray(scholarships, "university.name");
+      this.filteredScholarships = this.scholarships;
+      this.cities = [...new Set(scholarships.map(item => item.campus.city))];
+      this.courses = [...new Set(scholarships.map(item => item.course.name))];
+    },
+    filterScholarships(prop, value) {
+      this.filter[prop] = value;
+      console.log(this.filter[prop]);
+
+      this.filteredScholarships = this.scholarships.filter(this.filterRules);
+      console.log(this.filteredScholarships.length);
+    },
+    filterRules(item) {
+      const { city, course, ead, presential, price } = this.filter;
+
+      if (city && city !== item.campus.city && city.toUpperCase() !== "TODOS") {
+        return false;
+      }
+      if (
+        course &&
+        course !== item.course.name &&
+        course.toUpperCase() !== "TODOS"
+      ) {
+        return false;
+      }
+
+      //SE AS DUAS OPÇÕES ESTIVEREM HABILITADAS ENTÃO NÃO FILTRA
+      if (!presential || !ead) {
+        if (ead && item.course.kind.toUpperCase() !== "EAD") {
+          return false;
+        }
+
+        if (presential && item.course.kind.toUpperCase() !== "PRESENCIAL") {
+          return false;
+        }
+      }
+
+      if (price >= item.price_with_discount) {
+        return false;
+      }
+
+      return true;
     }
   }
 };

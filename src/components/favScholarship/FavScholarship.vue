@@ -53,12 +53,20 @@
 <script>
 import FavScholarshipItem from "./components/FavScholarshipItem/FavScholarshipItem.vue";
 import NewScholarship from "../newScholarship/NewScholarship.vue";
+import axios from "axios";
 
 export default {
   name: "favScholarship",
   components: {
     FavScholarshipItem,
     NewScholarship
+  },
+  mounted() {
+    axios
+      .get("https://testapi.io/api/redealumni/scholarships")
+      .then(({ data }) => {
+        this.$refs.newScholarship.setScholarships(data);
+      });
   },
   methods: {
     // addNew() {},

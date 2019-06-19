@@ -5,19 +5,19 @@
         <input class="checkbox" type="checkbox">
       </div>
       <div class="university__item">
-        <img src="https://www.univap.br/imagens/favicon/favicon-32x32.png">
+        <img :src="item.university.logo_url" class="university__item--logo">
       </div>
       <div class="university__item university__item--block">
         <div class="item__course">
-          <p class="text text--s text--secondary">Administração</p>
-          <p class="text text--xs">Bacharelado</p>
+          <p class="text text--s text--secondary">{{ item.course.name }}</p>
+          <p class="text text--xs">{{ item.course.level }}</p>
         </div>
         <div class="item__price">
           <p class="text text--s">
             Bolsa de
-            <span class="text text--s text--green text--bold">50%</span>
+            <span class="text text--s text--green text--bold">{{ item.discount_percentage }}%</span>
           </p>
-          <p class="text text--s text--green text--bold">R$ 374/mês</p>
+          <p class="text text--s text--green text--bold">R$ {{item.price_with_discount}}/mês</p>
         </div>
       </div>
     </div>
@@ -29,6 +29,9 @@
 
 <script>
 export default {
-  name: "newScholarshipItem"
+  name: "newScholarshipItem",
+  props: {
+    item: Object
+  }
 };
 </script>

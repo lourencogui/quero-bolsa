@@ -31,9 +31,16 @@
         name="button"
       >Excluir</button>
       <button
+        v-if="item.enabled"
         class="scholarship__university__options__button scholarship__university__options__button--yellow"
         name="button"
       >Ver oferta</button>
+      <button
+        v-else
+        class="scholarship__university__options__button scholarship__university__options__button--disabled"
+        name="button"
+        disabled
+      >Indisponível</button>
     </div>
   </div>
 </template>

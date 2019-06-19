@@ -210,14 +210,6 @@ export default {
     },
     addFavorites() {
       this.$emit("addFavorites", [this.selectedScholarships, this.scholarships]);
-
-      // this.selectedScholarships.forEach(selected => {
-      //   this.favoriteScholarships = [
-      //     ...this.favoriteScholarships,
-      //     this.filteredScholarships.find(item => item.id === selected)
-      //   ];
-      // });
-      // console.log(this.favoriteScholarships);
     }
   }
 };

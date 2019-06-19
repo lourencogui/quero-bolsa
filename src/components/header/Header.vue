@@ -25,16 +25,16 @@
     <nav class="header__nav">
       <ul class="nav__list">
         <li class="nav__item">
-          <a class="nav__item__page" href>Minha Conta</a>
+          <a class="nav__item__page text--s" href>Minha Conta</a>
         </li>
         <li class="nav__item">
-          <a class="nav__item__page" href>Pré-matriculas</a>
+          <a class="nav__item__page text--s" href>Pré-matriculas</a>
         </li>
         <li class="nav__item nav__item--active">
-          <a class="nav__item__page nav__item__page" href>Bolsas favoritas</a>
+          <a class="nav__item__page nav__item__page text--s" href>Bolsas favoritas</a>
         </li>
         <li class="nav__item nav__item--mobile">
-          <a class="nav__item__page" href>Menu</a>
+          <a class="nav__item__page text--s" href>Menu</a>
           <font-awesome-icon icon="chevron-down" color="#FFF" />
         </li>
       </ul>

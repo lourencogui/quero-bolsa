@@ -1,13 +1,13 @@
 <template>
   <div id="app">
     <Header/>
-    <FavScholarship />
-    <!-- <NewScholarship/> -->
+    <FavScholarship/>
     <Footer/>
   </div>
 </template>
 <style lang="scss">
 @import "./assets/styles/general.scss";
+@import "./assets/styles/mixins.scss";
 * {
   margin: 0;
   padding: 0;
@@ -21,12 +21,7 @@ body,
   overflow-x: hidden;
   height: 100%;
   background: "##fafaf9";
-  /* font-size: 85%; */
-
   color: $blackText;
-  /* font-size: 62.5%; */
-  /* @media (max-width: $tablet) { font-size: 58.5%; }
-    @media (max-width: $mobile) { font-size: 52.5%; } */
 }
 </style>
 <style>

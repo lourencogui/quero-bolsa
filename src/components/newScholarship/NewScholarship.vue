@@ -5,20 +5,20 @@
     </div>
     <div class="modal">
       <div class="title">
-        <h2>Adicionar bolsa</h2>
+        <h2 class="text--m">Adicionar bolsa</h2>
         <p class="text--s">Filtre e adicione as bolsas de seu interesse.</p>
       </div>
       <div class="filter">
         <div class="filter__top">
           <div class="filter__top__item">
-            <label class="text--s">SELECIONE SUA CIDADE</label>
+            <label class="text--xs">SELECIONE SUA CIDADE</label>
             <select class="select" v-on:change="e => filterScholarships('city', e.target.value)">
               <option>Todos</option>
               <option v-for="(city, index) in cities" :key="index">{{ city }}</option>
             </select>
           </div>
           <div class="filter__top__item">
-            <label class="text--s">SELECIONE O CURSO DE SUA PREFERÊNCIA</label>
+            <label class="text--xs">SELECIONE O CURSO DE SUA PREFERÊNCIA</label>
             <select class="select" v-on:change="e => filterScholarships('course', e.target.value)">
               <option>Todos</option>
               <option v-for="(course, index) in courses" :key="index">{{ course }}</option>
@@ -28,53 +28,36 @@
         <div class="filter__bottom">
           <div class="filter__bottom__type">
             <div>
-              <label class="text--s">COMO VOCÊ QUER ESTUDAR?</label>
+              <label class="text--xs">COMO VOCÊ QUER ESTUDAR?</label>
             </div>
             <div class="filter__bottom__type__options">
-              <!-- <div class="filter__bottom__type__options__checkbox"> -->
-              <!-- <input
-                  class="filter__checkbox--input checkbox"
-                  type="checkbox"
-                  value="Presencial"
-                  id="chk-presential"
-                  v-on:change="filterScholarships('kind', e.target.value)"
-                >
-              <label class="filter__checkbox--label" for="chk-presential">Presencial</label>-->
               <div
                 class="filter__bottom__type__options__checkbox"
                 @click="filterScholarships('presential', !filter.presential)"
               >
                 <font-awesome-icon :icon="filter.presential ? 'check' : 'square'" color="#007a8d"/>
-                <span>Presencial</span>
+                <span class="text--s">Presencial</span>
               </div>
               <div
                 class="filter__bottom__type__options__checkbox"
                 @click="filterScholarships('ead', !filter.ead)"
               >
                 <font-awesome-icon :icon="filter.ead ? 'check' : 'square'" color="#007a8d"/>
-                <span>A distância</span>
-                <!-- <input
-                  class="filter__checkbox--input"
-                  type="checkbox"
-                  value="A distância"
-                  id="chk-ead"
-                  v-on:change="filterScholarships('kind', '')"
-                >-->
-                <!-- <label class="filter__checkbox--label" for="chk-ead">A distância</label> -->
+                <span class="text--s">A distância</span>
               </div>
             </div>
           </div>
           <div class="filter__bottom__price">
             <div class="filter__bottom__price__options">
-              <p class="text--s">ATÉ QUANTO PODE PAGAR?</p>
-              <p class="text--s">R$ 10.000</p>
+              <p class="text--xs">ATÉ QUANTO PODE PAGAR?</p>
+              <p class="text--xs">R$ 10.000</p>
             </div>
             <div>
               <VueSlider
-                :dotSize="25"
-                :max="10000"
-                :interval="100"
-                :value="10000"
+                :dotSize=25
+                :max=10000
+                :interval=100
+                :value=0
                 @change="value => filterScholarships('price', value)"
               />
             </div>
@@ -83,12 +66,12 @@
       </div>
       <div class="sort">
         <div class="sort__right">
-          <p>Resultado:</p>
+          <p class="text--s">Resultado:</p>
         </div>
         <div class="sort__left">
-          <p>Ordenar por:</p>
-          <select class="select select--text">
-            <option>NOME DA FACULDADE</option>
+          <p class="text--s">Ordenar por:</p>
+          <select class="select select--text text--s">
+            <option class="text--s">NOME DA FACULDADE</option>
           </select>
         </div>
       </div>
@@ -101,7 +84,7 @@
         />
       </div>
       <div class="buttons">
-        <button class="buttons__item buttons__item--outline" name="cancel">Cancelar</button>
+        <button @click="changeVisibility" class="buttons__item buttons__item--outline" name="cancel">Cancelar</button>
         <button
           v-if="selectedScholarships.length === 0"
           class="buttons__item buttons__item--disabled"
@@ -148,7 +131,7 @@ export default {
         course: "TODOS",
         ead: false,
         presential: false,
-        price: 10000
+        price: 0
       }
     };
   },
@@ -199,14 +182,12 @@ export default {
     },
     selectItem(id) {
       if (this.selectedScholarships.filter(item => item === id) > 0) {
-        console.log("ja tem");
         this.selectedScholarships = this.selectedScholarships.filter(
           item => item !== id
         );
       } else {
         this.selectedScholarships = [id, ...this.selectedScholarships];
       }
-      console.log(this.selectedScholarships);
     },
     addFavorites() {
       this.$emit("addFavorites", [this.selectedScholarships, this.scholarships]);

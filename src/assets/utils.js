@@ -7,7 +7,6 @@ export const sortArray = (arr, prop) => {
     while (i < len) {
       a = a[prop[i]];
       b = b[prop[i]];
-      console.log(a);
       i++;
     }
     if (a < b) {

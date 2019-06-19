@@ -79,10 +79,16 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
+  overflow-x: hidden;
+  overflow-y: auto;
+
+
   @include lg {
     flex-direction: row;
     justify-content: flex-start;
+    overflow-x: auto;
+    overflow-y: hidden;
     // justify-content: center;
     // align-items: center;
   }
@@ -95,6 +101,7 @@
     padding: 2rem 3rem;
     border-radius: 3px;
     width: 100%;
+    min-width: 18rem;
     height: 30rem;
     box-shadow: 0 3px 2px 0 rgba(0,0,0,.09);
 

@@ -12,7 +12,6 @@ $bgDark: #fafaf9;
 $modalOverlay: rgba(31, 45, 48, 0.8);
 
 .text {
-  
   &--primary {
     color: $primaryBlue;
   }
@@ -29,23 +28,35 @@ $modalOverlay: rgba(31, 45, 48, 0.8);
     font-weight: bold;
   }
 
+  &--lightWeight {
+    font-weight: 100;
+  }
+
   &--light {
     color: $white;
   }
 
-
+  &--xs {
+    font-size: 0.6rem;
+  }
 
   &--s {
     font-size: 0.8rem;
   }
 
-  &--xs {
-    font-size: 0.7rem;
-  }
-
   &--m {
     font-size: 1rem;
   }
+
+  &--lg{
+    font-size: 1.2rem;
+
+  }
+
+  // &--xl{
+  //   font-size: 1.8rem;
+
+  // }
 }
 
 .select {
@@ -62,29 +73,3 @@ $modalOverlay: rgba(31, 45, 48, 0.8);
 .checkbox {
   margin-right: 0.5rem;
 }
-
-// .button {
-//   // align-items: center;
-//   height: 3rem;
-//   padding: 0.2rem 1em;
-//   // width: 100%;
-//   // margin: 0 0.5rem;
-//   border-radius: 3px;
- 
-//   &--outline {
-//     background: transparent;
-//     border: 2px solid $primaryBlue;
-//     flex: 1;
-//   }
-
-//   &--yellow {
-//     flex: 2;
-//     background: $primaryYellow;
-//     border: 2px solid $secondaryYellow;
-//   }
-
-//   &--disabled {
-//     flex: 2;
-//     background: $secondaryGray;
-//   }
-// }

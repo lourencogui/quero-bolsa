@@ -11,9 +11,10 @@
     display: flex;
     flex: 1;
     flex-direction: row;
+    padding: 0 1rem;
     @include lg {
-      justify-content: space-around;
-      padding: 0;
+      justify-content: space-between;
+      padding: 0 5rem;
     }
     justify-content: space-between;
     align-items: center;
@@ -81,7 +82,7 @@
 
   &__logo {
     // flex-grow: 1;
-    margin: 0 5rem;
+    // margin: 0 5rem;
 
     &__img {
       height: 2.5rem;
@@ -117,6 +118,10 @@
 
   &__nav {
     background-color: $primaryBlue;
+    padding: 0 1rem;
+    @include lg {
+      padding: 0 5rem;
+    }
 
     .nav__list {
       display: flex;
@@ -130,7 +135,7 @@
     }
 
     .nav__item {
-      margin: 0 1rem;
+      // margin: 0 1rem;
       display: none;
       height: 2.5rem;
 

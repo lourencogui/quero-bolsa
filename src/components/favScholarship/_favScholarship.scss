@@ -8,6 +8,9 @@
   // align-items: stretch;
   padding: 1rem;
   background: $bgDark;
+  @include lg {
+    padding: 1rem 5rem;
+  }
 }
 
 .breadcrumb {

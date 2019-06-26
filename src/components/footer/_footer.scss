@@ -14,7 +14,6 @@
 
   &__top {
     display: flex;
-    // flex: 1;
     background: $secondaryBlue;
     justify-content: center;
     align-items: center;
@@ -25,6 +24,9 @@
     @include lg {
       flex: 1;
       flex-wrap: nowrap;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
       // flex-direction: row;
     }
 
@@ -33,6 +35,7 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
+      text-align: center;
       padding: 1rem 1.5rem;
       width: 33.3%;
       border: 2px solid $primaryBlue;

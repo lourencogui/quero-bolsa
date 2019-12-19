@@ -28,6 +28,10 @@ $modalOverlay: rgba(31, 45, 48, 0.8);
     font-weight: bold;
   }
 
+  &--dark {
+    color: #000;
+  }
+
   &--lightWeight {
     font-weight: 100;
   }
@@ -62,6 +66,8 @@ $modalOverlay: rgba(31, 45, 48, 0.8);
   height: 2.2rem;
   border-radius: 3px;
   border: 2px solid $secondaryGray;
+  font-size: 0.7rem;
+  padding: 8px 5px;
 
   &--text {
     border: 0;
@@ -71,4 +77,26 @@ $modalOverlay: rgba(31, 45, 48, 0.8);
 
 .checkbox {
   margin-right: 0.5rem;
+  background-color: #fff;
+  border: 2px solid $dark;
+  border-radius: 4px;
+  -webkit-appearance: none;
+  height: 1.5em;
+  width: 1.3rem;
+  text-align: center;
+  cursor: pointer;
+
+  & + label {
+    cursor: pointer;
+  }
+
+  &:checked {
+    background-color: $primaryBlue;
+
+    &:after {
+      content: "\2714";
+      color: #fff;
+      text-align: center;
+    }
+  }
 }

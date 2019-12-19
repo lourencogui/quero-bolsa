@@ -1,12 +1,16 @@
 <template>
-  <div>
+  <div class="wrapper">
     <div class="container">
       <div class="breadcrumb">
         <div class="breadcrumb__item">
-          <a class="breadcrumb__text text--s text--secondary text--bold">Home</a>
+          <a class="breadcrumb__text text--s text--secondary text--bold"
+            >Home</a
+          >
         </div>
         <div class="breadcrumb__item">
-          <a class="breadcrumb__text text--s text--secondary text--bold">Minha conta</a>
+          <a class="breadcrumb__text text--s text--secondary text--bold"
+            >Minha conta</a
+          >
         </div>
         <div class="breadcrumb__item breadcrumb__item--selected">
           <a class="breadcrumb__text text--s">Bolsas favoritas</a>
@@ -15,23 +19,34 @@
 
       <div class="page-info">
         <h2 class="text text--xl">Bolsas Favoritas</h2>
-        <p class="text text--s text--lightWeight">Adicione bolsas de cursos e faculdades do seu interesse e receba atualizações com as melhores ofertas disponíveis</p>
+        <p class="text text--s text--lightWeight">
+          Adicione bolsas de cursos e faculdades do seu interesse e receba
+          atualizações com as melhores ofertas disponíveis
+        </p>
       </div>
       <div class="filter">
         <div
-          :class="`filter__item ${this.semester === '' && 'filter__item--selected'}`"
+          :class="
+            `filter__item ${this.semester === '' && 'filter__item--selected'}`
+          "
           @click="filterFavorites('')"
         >
           <p class="text text--s">Todos os semetres</p>
         </div>
         <div
-          :class="`filter__item ${this.semester === '2019.2' && 'filter__item--selected'} `"
+          :class="
+            `filter__item ${this.semester === '2019.2' &&
+              'filter__item--selected'} `
+          "
           @click="filterFavorites('2019.2')"
         >
           <p class="text text--s">2º semetre de 2019</p>
         </div>
         <div
-          :class="`filter__item ${this.semester === '2020.1' && 'filter__item--selected'} `"
+          :class="
+            `filter__item ${this.semester === '2020.1' &&
+              'filter__item--selected'} `
+          "
           @click="filterFavorites('2020.1')"
         >
           <p class="text text--s">1º semetre de 2020</p>
@@ -41,11 +56,17 @@
       <div class="scholarships">
         <div class="scholarships__new" @click="openNewScholarship">
           <div>
-            <font-awesome-icon icon="plus-circle" color="#18acc4" size="3x"/>
+            <font-awesome-icon
+              :icon="['fas', 'plus-circle']"
+              color="#18acc4"
+              size="3x"
+            />
           </div>
           <div class="scholarships__new__info">
             <h2 class="text text--lg">Adicionar curso</h2>
-            <strong class="text text--xs">Clique para adicionar bolsas de cursos do seu interesse</strong>
+            <strong class="text text--xs"
+              >Clique para adicionar bolsas de cursos do seu interesse</strong
+            >
           </div>
         </div>
         <FavScholarshipItem
@@ -56,13 +77,12 @@
         />
       </div>
     </div>
-    <NewScholarship ref="newScholarship" v-on:addFavorites="addFavorites"/>
+    <NewScholarship ref="newScholarship" v-on:addFavorites="addFavorites" />
   </div>
 </template>
 <style lang="scss" scoped>
 @import "./_favScholarship.scss";
 </style>
-
 
 <script>
 import FavScholarshipItem from "./components/FavScholarshipItem/FavScholarshipItem.vue";
@@ -91,6 +111,7 @@ export default {
           id: index,
           ...item
         }));
+        console.log(allWithId);
         this.$refs.newScholarship.setScholarships(allWithId);
       });
     if (cachedFavorites) {

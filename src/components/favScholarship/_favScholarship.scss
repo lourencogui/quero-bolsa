@@ -1,15 +1,21 @@
 @import "../../assets/styles/general";
 @import "../../assets/styles/mixins";
 
+.wrapper {
+  background: $bgDark;
+}
+
 .container {
   display: flex;
   flex: 1;
   flex-direction: column;
-  // align-items: stretch;
   padding: 1rem;
   background: $bgDark;
   @include lg {
     padding: 1rem 5rem;
+    max-width: 1700px;
+    margin: 0 auto;
+    padding: 1rem 4rem;
   }
 }
 
@@ -86,7 +92,6 @@
   overflow-x: hidden;
   overflow-y: auto;
 
-
   @include lg {
     flex-direction: row;
     justify-content: flex-start;
@@ -106,7 +111,7 @@
     width: 100%;
     min-width: 18rem;
     height: 30rem;
-    box-shadow: 0 3px 2px 0 rgba(0,0,0,.09);
+    box-shadow: 0 3px 2px 0 rgba(0, 0, 0, 0.09);
 
     @include lg {
       width: 19rem;

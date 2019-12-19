@@ -1,6 +1,17 @@
 @import "../../assets/styles/general";
 @import "../../assets/styles/mixins";
 
+.wrapper {
+  &__top {
+    height: 50%;
+    background: $secondaryBlue;
+  }
+
+  &__bottom {
+    height: 50%;
+  }
+}
+
 .footer {
   display: flex;
   flex-direction: column;
@@ -9,7 +20,7 @@
   height: 20rem;
 
   @include lg {
-    height: 9rem;
+    height: auto;
   }
 
   &__top {
@@ -19,7 +30,6 @@
     align-items: center;
     flex-direction: row;
     flex-wrap: wrap;
-    height: 50%;
 
     @include lg {
       flex: 1;
@@ -27,7 +37,9 @@
       flex-direction: row;
       justify-content: space-between;
       align-items: center;
-      // flex-direction: row;
+      max-width: 1700px;
+      margin: 0 auto;
+      padding: 1rem 4rem;
     }
 
     &__box {
@@ -43,13 +55,16 @@
       @include lg {
         border: none;
         flex-direction: row;
+        justify-content: flex-start;
+        width: auto;
+        padding: 1rem 0;
       }
 
       &--grow {
         flex-direction: row;
         border-top: none;
         @include lg {
-          width: 33%;
+          width: auto;
         }
         width: 100%;
       }
@@ -61,6 +76,7 @@
 
         @include lg {
           display: flex;
+          align-items: flex-start;
         }
 
         &--grow {
@@ -74,25 +90,21 @@
           }
           margin: 0.5rem 0;
         }
-
-        // &--mobile {
-        //   display: flex;
-        //   flex: 1;
-        //   flex-direction: column;
-        //   justify-content: center;
-        //   @include lg {
-        //     display: none;
-        //   }
-        // }
       }
     }
   }
 
   &__bottom {
-    height: 50%;
+    @include lg {
+      max-width: 1700px;
+      margin: 0 auto;
+      padding: 2.5rem 4rem;
+    }
     display: flex;
+    flex: 1;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    height: 100%;
   }
 }

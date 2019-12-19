@@ -2,10 +2,10 @@
   <div class="university__container">
     <div class="university">
       <div class="university__item" @click="selectItem(item.id)">
-        <input class="checkbox" type="checkbox">
+        <input class="checkbox" type="checkbox" />
       </div>
-      <div class="university__item">
-        <img :src="item.university.logo_url" class="university__item--logo">
+      <div class="university__item university__item--logo">
+        <img :src="item.university.logo_url" />
       </div>
       <div class="university__item university__item--block">
         <div class="item__course">
@@ -19,7 +19,7 @@
               class="text text--s text--green text--bold"
             >{{ item.discount_percentage }}%</span>
           </p>
-          <p class="text text--s text--green text--bold">R$ {{item.price_with_discount}}/mês</p>
+          <p class="text text--s text--green text--bold">R$ {{ item.price_with_discount }}/mês</p>
         </div>
       </div>
     </div>

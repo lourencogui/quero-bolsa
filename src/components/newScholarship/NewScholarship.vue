@@ -1,64 +1,72 @@
 <template>
   <div :class="`container__modal  ${!visible && 'container__modal--hidden'}`">
     <div class="close" @click="changeVisibility()">
-      <font-awesome-icon icon="times" color="#FFF" size="lg"/>
+      <font-awesome-icon icon="times" color="#FFF" size="lg" />
     </div>
     <div class="modal">
       <div class="title">
-        <h2 class="text--m">Adicionar bolsa</h2>
+        <h2 class="text--lg text--dark">Adicionar bolsa</h2>
         <p class="text--s">Filtre e adicione as bolsas de seu interesse.</p>
       </div>
       <div class="filter">
         <div class="filter__top">
           <div class="filter__top__item">
-            <label class="text--xs">SELECIONE SUA CIDADE</label>
-            <select class="select" v-on:change="e => filterScholarships('city', e.target.value)">
+            <label class="text--xs text--dark">SELECIONE SUA CIDADE</label>
+            <select class="select" v-model="filterCity">
               <option>Todos</option>
-              <option v-for="(city, index) in cities" :key="index">{{ city }}</option>
+              <option v-for="(city, index) in cities" :key="index">
+                {{
+                city
+                }}
+              </option>
             </select>
           </div>
           <div class="filter__top__item">
-            <label class="text--xs">SELECIONE O CURSO DE SUA PREFERÊNCIA</label>
-            <select class="select" v-on:change="e => filterScholarships('course', e.target.value)">
+            <label class="text--xs text--dark">SELECIONE O CURSO DE SUA PREFERÊNCIA</label>
+            <select class="select" v-model="filterCourse">
               <option>Todos</option>
-              <option v-for="(course, index) in courses" :key="index">{{ course }}</option>
+              <option v-for="(course, index) in courses" :key="index">
+                {{
+                course
+                }}
+              </option>
             </select>
           </div>
         </div>
         <div class="filter__bottom">
           <div class="filter__bottom__type">
             <div>
-              <label class="text--xs">COMO VOCÊ QUER ESTUDAR?</label>
+              <label class="text--xs text--dark">COMO VOCÊ QUER ESTUDAR?</label>
             </div>
             <div class="filter__bottom__type__options">
-              <div
-                class="filter__bottom__type__options__checkbox"
-                @click="filterScholarships('presential', !filter.presential)"
-              >
-                <input class="checkbox" type="checkbox">
-                <span class="text--s">Presencial</span>
+              <div class="filter__bottom__type__options__checkbox">
+                <input
+                  class="checkbox"
+                  type="checkbox"
+                  id="chk-presential"
+                  v-model="filterPresential"
+                />
+                <label for="chk-presential" class="text--s">Presencial</label>
               </div>
-              <div
-                class="filter__bottom__type__options__checkbox"
-                @click="filterScholarships('ead', !filter.ead)"
-              >
-                <input class="checkbox" type="checkbox">
-                <span class="text--s">A distância</span>
+              <div class="filter__bottom__type__options__checkbox">
+                <input class="checkbox" type="checkbox" id="chk-ead" v-model="filterEad" />
+                <label for="chk-ead" class="text--s">A distância</label>
               </div>
             </div>
           </div>
           <div class="filter__bottom__price">
             <div class="filter__bottom__price__options">
-              <p class="text--xs">ATÉ QUANTO PODE PAGAR?</p>
+              <p class="text--xs text--dark">ATÉ QUANTO PODE PAGAR?</p>
               <p class="text--xs">R$ 10.000</p>
             </div>
             <div>
               <VueSlider
                 :dotSize="25"
                 :max="10000"
-                :interval="100"
-                :value="0"
-                @change="value => filterScholarships('price', value)"
+                :interval="50"
+                :value="10000"
+                :lazy="true"
+                v-model="filterPrice"
               />
             </div>
           </div>
@@ -108,8 +116,6 @@
 @import "./_newScholarship.scss";
 </style>
 
-
-
 <script>
 import NewScholarshipItem from "./newScholarshipItem/NewScholarshipItem.vue";
 import VueSlider from "vue-slider-component";
@@ -130,14 +136,29 @@ export default {
       favoriteScholarships: [],
       cities: [],
       courses: [],
-      filter: {
-        city: "TODOS",
-        course: "TODOS",
-        ead: false,
-        presential: false,
-        price: 0
-      }
+      filterEad: false,
+      filterPresential: false,
+      filterCity: "TODOS",
+      filterCourse: "TODOS",
+      filterPrice: 10000
     };
+  },
+  watch: {
+    filterEad: function() {
+      this.filteredScholarships = this.scholarships.filter(this.filterRules);
+    },
+    filterPresential: function() {
+      this.filteredScholarships = this.scholarships.filter(this.filterRules);
+    },
+    filterPrice: function() {
+      this.filteredScholarships = this.scholarships.filter(this.filterRules);
+    },
+    filterCity: function() {
+      this.filteredScholarships = this.scholarships.filter(this.filterRules);
+    },
+    filterCourse: function() {
+      this.filteredScholarships = this.scholarships.filter(this.filterRules);
+    }
   },
   methods: {
     changeVisibility() {
@@ -149,36 +170,45 @@ export default {
       this.cities = [...new Set(scholarships.map(item => item.campus.city))];
       this.courses = [...new Set(scholarships.map(item => item.course.name))];
     },
-    filterScholarships(prop, value) {
-      this.filter[prop] = value;
-      this.filteredScholarships = this.scholarships.filter(this.filterRules);
-    },
     filterRules(item) {
-      const { city, course, ead, presential, price } = this.filter;
+      const {
+        filterCity,
+        filterCourse,
+        filterEad,
+        filterPresential,
+        filterPrice
+      } = this;
 
-      if (city && city !== item.campus.city && city.toUpperCase() !== "TODOS") {
+      if (
+        filterCity &&
+        filterCity !== item.campus.city &&
+        filterCity.toUpperCase() !== "TODOS"
+      ) {
         return false;
       }
       if (
-        course &&
-        course !== item.course.name &&
-        course.toUpperCase() !== "TODOS"
+        filterCourse &&
+        filterCourse !== item.course.name &&
+        filterCourse.toUpperCase() !== "TODOS"
       ) {
         return false;
       }
 
       //SE AS DUAS OPÇÕES ESTIVEREM HABILITADAS ENTÃO NÃO FILTRA
-      if (!presential || !ead) {
-        if (ead && item.course.kind.toUpperCase() !== "EAD") {
+      if (!filterPresential || !filterEad) {
+        if (filterEad && item.course.kind.toUpperCase() !== "EAD") {
           return false;
         }
 
-        if (presential && item.course.kind.toUpperCase() !== "PRESENCIAL") {
+        if (
+          filterPresential &&
+          item.course.kind.toUpperCase() !== "PRESENCIAL"
+        ) {
           return false;
         }
       }
 
-      if (price >= item.price_with_discount) {
+      if (filterPrice <= item.price_with_discount) {
         return false;
       }
 

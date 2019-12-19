@@ -3,23 +3,19 @@
 
 .header {
   background-color: $white;
-  // height: 8rem;
-  // display: flex;
-  // flex-direction: column;
 
   &__wrapper {
     display: flex;
     flex: 1;
     flex-direction: row;
-    padding: 0 1rem;
-    @include lg {
-      justify-content: space-between;
-      padding: 0 5rem;
-    }
     justify-content: space-between;
+    @include lg {
+      max-width: 1700px;
+      margin: 0 auto;
+      padding: 0 4rem;
+    }
     align-items: center;
     height: 5rem;
-    padding: 1rem;
   }
 
   &__left {
@@ -81,8 +77,11 @@
   }
 
   &__logo {
-    // flex-grow: 1;
-    // margin: 0 5rem;
+    @include lg {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+    }
 
     &__img {
       height: 2.5rem;
@@ -102,6 +101,8 @@
 
     @include lg {
       flex-direction: row;
+      flex: 1;
+      justify-content: flex-end;
       &::after {
         content: "";
       }
@@ -118,9 +119,11 @@
 
   &__nav {
     background-color: $primaryBlue;
-    padding: 0 1rem;
+    // padding: 0 1rem;
     @include lg {
-      padding: 0 5rem;
+      max-width: 1700px;
+      margin: 0 auto;
+      padding: 0 4rem;
     }
 
     .nav__list {
@@ -135,7 +138,6 @@
     }
 
     .nav__item {
-      // margin: 0 1rem;
       display: none;
       height: 2.5rem;
 
@@ -168,7 +170,18 @@
         color: $white;
         text-decoration: none;
         padding: 0 1rem;
+
+        &--fixed {
+          @include lg {
+            padding: 0;
+            padding-right: 1rem;
+          }
+        }
       }
     }
   }
+}
+
+.nav__wrapper {
+  background: $primaryBlue;
 }

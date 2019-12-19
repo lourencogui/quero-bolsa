@@ -46,22 +46,12 @@
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  // margin-bottom: 1rem;
 }
 
 .filter {
   display: flex;
   flex-direction: column;
   width: 100%;
-
-  &__checkbox--label {
-    font-size: 0.8rem;
-  }
-
-  &__checkbox--input {
-    background-color: transparent;
-    cursor: pointer;
-  }
 
   &__top {
     display: flex;
@@ -101,7 +91,6 @@
       @include lg {
         margin: 0;
         width: 50%;
-        // margin: 1rem;
 
         &:first-child {
           padding-right: 1rem;
@@ -124,6 +113,13 @@
     &__price {
       display: flex;
       flex-direction: column;
+      flex: 1;
+
+      &__options {
+        & > p {
+          margin: 5px;
+        }
+      }
     }
   }
 }
@@ -139,12 +135,20 @@
     display: flex;
     flex-direction: column;
     align-items: flex-end;
+
+    @include lg {
+      flex-direction: row;
+      align-items: center;
+    }
   }
 
   &__right {
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
+
+    @include lg {
+      justify-content: flex-end;
+    }
   }
 }
 
@@ -152,11 +156,10 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  // align-items: center;
   width: 100%;
   max-height: 15rem;
-  // min-height: 8rem;
   overflow-y: auto;
+  margin: 0.5rem 0;
 }
 
 .buttons {

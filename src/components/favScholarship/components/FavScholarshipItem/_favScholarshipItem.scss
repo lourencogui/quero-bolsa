@@ -7,17 +7,19 @@
   justify-content: flex-start;
   align-items: center;
   background: $white;
-  padding: 2rem 1rem;
+  padding: 0 1rem;
   border-radius: 3px;
   width: 100%;
-  min-width: 19rem;
-  height: 30rem;
-  box-shadow: 0 3px 2px 0 rgba(0, 0, 0, 0.09);
+  min-width: 17rem;
+  -webkit-box-shadow: 0px 5px 8px 2px rgba(170, 170, 170, 0.6);
+  -moz-box-shadow: 0px 5px 8px 2px rgba(170, 170, 170, 0.6);
+  box-shadow: 0px 5px 8px 2px rgba(170, 170, 170, 0.6);
   margin: 1rem 0;
 
   @include lg {
     width: 19rem;
     margin: 0 1rem;
+    height: 24rem;
   }
 
   &__university {
@@ -29,9 +31,12 @@
     width: 100%;
 
     &__logo {
-      &--img{
-        height: 3rem;
-        width: 5rem;
+      height: 6rem;
+      display: flex;
+      align-items: center;
+      &--img {
+        max-height: 5rem;
+        max-width: 6rem;
       }
       padding: 1rem 0;
     }
@@ -40,22 +45,18 @@
       display: flex;
       flex-direction: column;
       justify-content: space-around;
-      
+
       &__rating {
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
         align-items: center;
         justify-content: center;
-        padding: 1rem 0;
-      }
-    }
+        padding: 0.5rem 0;
 
-    &::after {
-      content: "";
-      height: 0.2rem;
-      width: 100%;
-      background: $secondaryGray;
-      margin: 0.5rem 0;
+        & > p {
+          margin-right: 0.5rem;
+        }
+      }
     }
 
     &__period {
@@ -63,26 +64,40 @@
       width: 100%;
       display: flex;
       flex-direction: column;
-      padding: 1rem 0;
-    }
-
-    &__price {
-      display: flex;
-      flex-direction: column;
-      &::before {
+      &::before,
+      &::after {
         content: "";
         height: 0.2rem;
         width: 100%;
         background: $secondaryGray;
         margin: 1rem 0;
+
+        @include lg {
+          margin: 0.5rem 0;
+        }
       }
+
+      & > h2 {
+        margin-bottom: 1rem;
+      }
+    }
+
+    &__price {
+      display: flex;
+      flex-direction: column;
       text-align: center;
 
       &__month {
         display: flex;
         flex-direction: row;
         justify-content: center;
+        align-items: flex-end;
         margin: 0.5rem 0;
+
+        & > p {
+          margin-left: 0.1rem;
+          text-align: center;
+        }
       }
     }
 
@@ -95,7 +110,7 @@
 
       &__button {
         align-items: center;
-        height: 2.5rem;
+        height: 2rem;
         // padding: 0rem 1em;
         width: 100%;
         border-radius: 3px;
@@ -114,7 +129,8 @@
 
         &--disabled {
           flex: 2;
-          background: $secondaryGray;
+          background: $primaryGray;
+          border: 2px solid $primaryGray;
         }
       }
     }

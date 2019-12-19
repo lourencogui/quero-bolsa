@@ -87,7 +87,6 @@
 <script>
 import FavScholarshipItem from "./components/FavScholarshipItem/FavScholarshipItem.vue";
 import NewScholarship from "../newScholarship/NewScholarship.vue";
-import axios from "axios";
 
 export default {
   name: "favScholarship",
@@ -104,16 +103,6 @@ export default {
   },
   mounted() {
     const cachedFavorites = JSON.parse(localStorage.getItem("favorites"));
-    axios
-      .get("https://testapi.io/api/redealumni/scholarships")
-      .then(({ data }) => {
-        const allWithId = data.map((item, index) => ({
-          id: index,
-          ...item
-        }));
-        console.log(allWithId);
-        this.$refs.newScholarship.setScholarships(allWithId);
-      });
     if (cachedFavorites) {
       this.favoriteScholarships = cachedFavorites;
     }

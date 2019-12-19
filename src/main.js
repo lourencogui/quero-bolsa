@@ -2,7 +2,12 @@ import Vue from "vue";
 import App from "./App.vue";
 import store from "./store";
 import { library } from "@fortawesome/fontawesome-svg-core";
-import { faInfoCircle, faPlusCircle } from "@fortawesome/free-solid-svg-icons";
+import {
+  faInfoCircle,
+  faPlusCircle,
+  faTimes,
+  faChevronDown
+} from "@fortawesome/free-solid-svg-icons";
 import {
   faUserCircle,
   faComments,
@@ -19,6 +24,8 @@ library.add(faPlusCircle);
 library.add(faComments);
 library.add(faEnvelope);
 library.add(faHeart);
+library.add(faTimes);
+library.add(faChevronDown);
 Vue.component("font-awesome-icon", FontAwesomeIcon);
 
 Vue.config.productionTip = false;

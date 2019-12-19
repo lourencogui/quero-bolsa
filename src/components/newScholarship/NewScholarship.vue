@@ -1,7 +1,7 @@
 <template>
   <div :class="`container__modal  ${!visible && 'container__modal--hidden'}`">
     <div class="close" @click="changeVisibility()">
-      <font-awesome-icon icon="times" color="#FFF" size="lg" />
+      <font-awesome-icon :icon="['fas', 'times']" color="#FFF" size="lg" />
     </div>
     <div class="modal">
       <div class="title">
@@ -15,20 +15,18 @@
             <select class="select" v-model="filterCity">
               <option>Todos</option>
               <option v-for="(city, index) in cities" :key="index">
-                {{
-                city
-                }}
+                {{ city }}
               </option>
             </select>
           </div>
           <div class="filter__top__item">
-            <label class="text--xs text--dark">SELECIONE O CURSO DE SUA PREFERÊNCIA</label>
+            <label class="text--xs text--dark"
+              >SELECIONE O CURSO DE SUA PREFERÊNCIA</label
+            >
             <select class="select" v-model="filterCourse">
               <option>Todos</option>
               <option v-for="(course, index) in courses" :key="index">
-                {{
-                course
-                }}
+                {{ course }}
               </option>
             </select>
           </div>
@@ -49,7 +47,12 @@
                 <label for="chk-presential" class="text--s">Presencial</label>
               </div>
               <div class="filter__bottom__type__options__checkbox">
-                <input class="checkbox" type="checkbox" id="chk-ead" v-model="filterEad" />
+                <input
+                  class="checkbox"
+                  type="checkbox"
+                  id="chk-ead"
+                  v-model="filterEad"
+                />
                 <label for="chk-ead" class="text--s">A distância</label>
               </div>
             </div>
@@ -96,18 +99,24 @@
           @click="changeVisibility"
           class="buttons__item buttons__item--outline"
           name="cancel"
-        >Cancelar</button>
+        >
+          Cancelar
+        </button>
         <button
           v-if="selectedScholarships.length === 0"
           class="buttons__item buttons__item--disabled"
           name="add"
-        >Adicionar bolsa(s)</button>
+        >
+          Adicionar bolsa(s)
+        </button>
         <button
           v-else
           @click="addFavorites"
           class="buttons__item buttons__item--yellow"
           name="add"
-        >Adicionar bolsa(s)</button>
+        >
+          Adicionar bolsa(s)
+        </button>
       </div>
     </div>
   </div>
@@ -119,6 +128,7 @@
 <script>
 import NewScholarshipItem from "./newScholarshipItem/NewScholarshipItem.vue";
 import VueSlider from "vue-slider-component";
+import axios from "axios";
 import { sortArray } from "../../assets/utils";
 import "vue-slider-component/theme/antd.css";
 export default {
@@ -142,6 +152,18 @@ export default {
       filterCourse: "TODOS",
       filterPrice: 10000
     };
+  },
+  mounted() {
+    axios
+      .get("https://testapi.io/api/redealumni/scholarships")
+      .then(({ data }) => {
+        const allWithId = data.map((item, index) => ({
+          id: index,
+          ...item
+        }));
+        console.log(allWithId);
+        this.setScholarships(allWithId);
+      });
   },
   watch: {
     filterEad: function() {

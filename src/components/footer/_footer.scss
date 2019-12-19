@@ -17,7 +17,7 @@
   flex-direction: column;
   background: $primaryBlue;
   bottom: 0;
-  height: 20rem;
+  height: 18rem;
 
   @include lg {
     height: auto;
@@ -77,6 +77,10 @@
         @include lg {
           display: flex;
           align-items: flex-start;
+
+          & > p {
+            margin: 0.2rem 0;
+          }
         }
 
         &--grow {

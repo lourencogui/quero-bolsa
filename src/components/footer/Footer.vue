@@ -13,8 +13,8 @@
           <div
             class="footer__top__box__info footer__top__box__info--grow text--s text--light"
           >
-            <span class="text--s">0800 123 2222</span>
-            <span class="text--xs">Seg - Sex 8h-22h</span>
+            <p class="text--s">0800 123 2222</p>
+            <p class="text--xs">Seg - Sex 8h-22h</p>
           </div>
         </div>
         <div class="footer__top__box">

@@ -28,16 +28,24 @@
       display: block;
     }
     &:nth-child(2) {
-      display: block;
+      display: flex;
+      align-items: center;
+
+      @include lg {
+        display: block;
+      }
     }
 
-    margin: 0 0.5rem;
     & + & {
       &::before {
         content: "<";
+        font-size: 1.5rem;
+        margin: 0 1rem;
         color: $primaryBlue;
         @include lg {
+          font-size: 1rem;
           content: "/";
+          margin: 0 1rem;
           color: $dark;
         }
       }
@@ -77,6 +85,30 @@
       padding: 0.5rem 1rem;
     }
 
+    &:nth-child(1) {
+      border-top-left-radius: 4px;
+      border-top-right-radius: 4px;
+
+      @include lg {
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+        border-top-left-radius: 3px;
+        border-bottom-left-radius: 3px;
+      }
+    }
+
+    &:nth-child(3) {
+      border-bottom-left-radius: 4px;
+      border-bottom-right-radius: 4px;
+
+      @include lg {
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+        border-top-right-radius: 3px;
+        border-bottom-right-radius: 3px;
+      }
+    }
+
     &--selected {
       background: $secondaryBlue;
       color: $white;
@@ -88,7 +120,8 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
+  padding: 0 1rem;
   overflow-x: hidden;
   overflow-y: auto;
 
@@ -97,8 +130,7 @@
     justify-content: flex-start;
     overflow-x: auto;
     overflow-y: hidden;
-    // justify-content: center;
-    // align-items: center;
+    padding: 0;
   }
   &__new {
     display: flex;
@@ -106,15 +138,18 @@
     justify-content: center;
     align-items: center;
     background: $white;
-    padding: 2rem 3rem;
+    padding: 2rem 1rem;
     border-radius: 3px;
     width: 100%;
-    min-width: 18rem;
-    height: 30rem;
-    box-shadow: 0 3px 2px 0 rgba(0, 0, 0, 0.09);
+    min-width: 16rem;
+    height: 24rem;
+    -webkit-box-shadow: 0px 5px 8px 2px rgba(170, 170, 170, 0.6);
+    -moz-box-shadow: 0px 5px 8px 2px rgba(170, 170, 170, 0.6);
+    box-shadow: 0px 5px 8px 2px rgba(170, 170, 170, 0.6);
+    margin: 1rem 1rem;
 
     @include lg {
-      width: 19rem;
+      width: 18rem;
     }
 
     &__info {
@@ -123,7 +158,7 @@
       justify-content: center;
       align-items: center;
       text-align: center;
-      margin: 0.5rem 0;
+      margin: 2rem 0;
     }
   }
 }

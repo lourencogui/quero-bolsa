@@ -14,6 +14,7 @@
   box-sizing: border-box;
   outline: 0;
   font-family: "Montserrat";
+  -webkit-font-smoothing: antialiased;
 }
 html,
 body,

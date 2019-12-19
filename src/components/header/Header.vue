@@ -58,7 +58,11 @@
           </li>
           <li class="nav__item nav__item--mobile">
             <a class="nav__item__page text--s" href>Menu</a>
-            <font-awesome-icon icon="chevron-down" color="#FFF" />
+            <font-awesome-icon
+              :icon="['fas', 'chevron-down']"
+              color="#FFF"
+              size="s"
+            />
           </li>
         </ul>
       </nav>

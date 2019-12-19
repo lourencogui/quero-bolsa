@@ -24,8 +24,11 @@
 .close {
   display: flex;
   justify-content: flex-end;
+  width: 100%;
+  padding: 0 1rem;
   @include lg {
     width: 50rem;
+    padding: 0;
   }
   margin-bottom: 1rem;
 }
@@ -37,7 +40,10 @@
   justify-content: center;
   align-items: flex-start;
   max-height: 90%;
+  min-width: 100%;
   @include lg {
+    min-width: 400px;
+    max-width: 1000px;
     width: 50rem;
   }
 }

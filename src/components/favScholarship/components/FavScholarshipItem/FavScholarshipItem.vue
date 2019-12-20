@@ -46,6 +46,7 @@
         Excluir
       </button>
       <button
+        key="scholarship-details"
         v-if="item.enabled"
         class="scholarship__university__options__button scholarship__university__options__button--yellow"
         name="button"
@@ -53,6 +54,7 @@
         Ver oferta
       </button>
       <button
+        key="scholarship-details"
         v-else
         class="scholarship__university__options__button scholarship__university__options__button--disabled"
         name="button"

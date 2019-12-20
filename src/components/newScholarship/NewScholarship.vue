@@ -1,6 +1,6 @@
 <template>
   <transition name="fade">
-    <div v-if="visible" class="container__modal">
+    <div key="modal" v-if="visible" class="container__modal">
       <div class="close" @click="changeVisibility()">
         <font-awesome-icon :icon="['fas', 'times']" color="#FFF" size="lg" />
       </div>

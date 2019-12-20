@@ -87,11 +87,11 @@
   </footer>
 </template>
 <style lang="scss" scoped>
-@import "./_footer.scss";
+@import "./_bottomSection.scss";
 </style>
 
 <script>
 export default {
-  name: "footer"
+  name: "BottomSection"
 };
 </script>

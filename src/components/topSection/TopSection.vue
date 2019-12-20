@@ -71,11 +71,11 @@
 </template>
 
 <style lang="scss" scoped>
-@import "./_header.scss";
+@import "./_topSection.scss";
 </style>
 
 <script>
 export default {
-  name: "header"
+  name: "TopSection"
 };
 </script>

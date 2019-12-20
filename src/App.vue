@@ -1,8 +1,8 @@
 <template>
   <div id="app">
-    <Header />
+    <TopSection />
     <FavScholarship />
-    <Footer />
+    <BottomSection />
   </div>
 </template>
 <style lang="scss">
@@ -37,15 +37,15 @@ body,
 </style>
 
 <script>
-import Header from "./components/header/Header.vue";
-import Footer from "./components/footer/Footer.vue";
+import TopSection from "./components/topSection/TopSection.vue";
+import BottomSection from "./components/bottomSection/BottomSection.vue";
 import FavScholarship from "./components/favScholarship/FavScholarship.vue";
 
 export default {
   name: "app",
   components: {
-    Header,
-    Footer,
+    TopSection,
+    BottomSection,
     FavScholarship
   }
 };

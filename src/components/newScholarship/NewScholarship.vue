@@ -1,125 +1,125 @@
 <template>
-  <div :class="`container__modal  ${!visible && 'container__modal--hidden'}`">
-    <div class="close" @click="changeVisibility()">
-      <font-awesome-icon :icon="['fas', 'times']" color="#FFF" size="lg" />
-    </div>
-    <div class="modal">
-      <div class="title">
-        <h2 class="text--lg text--dark">Adicionar bolsa</h2>
-        <p class="text--s">Filtre e adicione as bolsas de seu interesse.</p>
+  <transition name="fade">
+    <div v-if="visible" class="container__modal">
+      <div class="close" @click="changeVisibility()">
+        <font-awesome-icon :icon="['fas', 'times']" color="#FFF" size="lg" />
       </div>
-      <div class="filter">
-        <div class="filter__top">
-          <div class="filter__top__item">
-            <label class="text--xs text--dark">SELECIONE SUA CIDADE</label>
-            <select class="select" v-model="filterCity">
-              <option>Todos</option>
-              <option v-for="(city, index) in cities" :key="index">
-                {{ city }}
-              </option>
+      <div class="modal">
+        <div class="title">
+          <h2 class="text--lg text--dark">Adicionar bolsa</h2>
+          <p class="text--s">Filtre e adicione as bolsas de seu interesse.</p>
+        </div>
+        <div class="filter">
+          <div class="filter__top">
+            <div class="filter__top__item">
+              <label class="text--xs text--dark">SELECIONE SUA CIDADE</label>
+              <select class="select" v-model="filterCity">
+                <option>Todos</option>
+                <option v-for="(city, index) in cities" :key="index">
+                  {{ city }}
+                </option>
+              </select>
+            </div>
+            <div class="filter__top__item">
+              <label class="text--xs text--dark"
+                >SELECIONE O CURSO DE SUA PREFERÊNCIA</label
+              >
+              <select class="select" v-model="filterCourse">
+                <option>Todos</option>
+                <option v-for="(course, index) in courses" :key="index">
+                  {{ course }}
+                </option>
+              </select>
+            </div>
+          </div>
+          <div class="filter__bottom">
+            <div class="filter__bottom__type">
+              <div>
+                <label class="text--xs text--dark"
+                  >COMO VOCÊ QUER ESTUDAR?</label
+                >
+              </div>
+              <div class="filter__bottom__type__options">
+                <div class="filter__bottom__type__options__checkbox">
+                  <input
+                    class="checkbox"
+                    type="checkbox"
+                    id="chk-presential"
+                    v-model="filterPresential"
+                  />
+                  <label for="chk-presential" class="text--s">Presencial</label>
+                </div>
+                <div class="filter__bottom__type__options__checkbox">
+                  <input
+                    class="checkbox"
+                    type="checkbox"
+                    id="chk-ead"
+                    v-model="filterEad"
+                  />
+                  <label for="chk-ead" class="text--s">A distância</label>
+                </div>
+              </div>
+            </div>
+            <div class="filter__bottom__price">
+              <div class="filter__bottom__price__options">
+                <p class="text--xs text--dark">ATÉ QUANTO PODE PAGAR?</p>
+                <p class="text--xs">R$ 10.000</p>
+              </div>
+              <div>
+                <VueSlider
+                  :dotSize="25"
+                  :max="10000"
+                  :interval="50"
+                  :value="10000"
+                  :lazy="true"
+                  v-model="filterPrice"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="sort">
+          <div class="sort__right">
+            <p class="text--s">Resultado:</p>
+          </div>
+          <div class="sort__left">
+            <p class="text--s">Ordenar por:</p>
+            <select class="select select--text text--s">
+              <option class="text--s">NOME DA FACULDADE</option>
             </select>
           </div>
-          <div class="filter__top__item">
-            <label class="text--xs text--dark"
-              >SELECIONE O CURSO DE SUA PREFERÊNCIA</label
-            >
-            <select class="select" v-model="filterCourse">
-              <option>Todos</option>
-              <option v-for="(course, index) in courses" :key="index">
-                {{ course }}
-              </option>
-            </select>
-          </div>
         </div>
-        <div class="filter__bottom">
-          <div class="filter__bottom__type">
-            <div>
-              <label class="text--xs text--dark">COMO VOCÊ QUER ESTUDAR?</label>
-            </div>
-            <div class="filter__bottom__type__options">
-              <div class="filter__bottom__type__options__checkbox">
-                <input
-                  class="checkbox"
-                  type="checkbox"
-                  id="chk-presential"
-                  v-model="filterPresential"
-                />
-                <label for="chk-presential" class="text--s">Presencial</label>
-              </div>
-              <div class="filter__bottom__type__options__checkbox">
-                <input
-                  class="checkbox"
-                  type="checkbox"
-                  id="chk-ead"
-                  v-model="filterEad"
-                />
-                <label for="chk-ead" class="text--s">A distância</label>
-              </div>
-            </div>
-          </div>
-          <div class="filter__bottom__price">
-            <div class="filter__bottom__price__options">
-              <p class="text--xs text--dark">ATÉ QUANTO PODE PAGAR?</p>
-              <p class="text--xs">R$ 10.000</p>
-            </div>
-            <div>
-              <VueSlider
-                :dotSize="25"
-                :max="10000"
-                :interval="50"
-                :value="10000"
-                :lazy="true"
-                v-model="filterPrice"
-              />
-            </div>
-          </div>
+        <div class="results">
+          <NewScholarshipItem
+            :key="scholarship.id"
+            v-for="scholarship in filteredScholarships"
+            :item="scholarship"
+            v-on:selectItem="selectItem"
+          />
         </div>
-      </div>
-      <div class="sort">
-        <div class="sort__right">
-          <p class="text--s">Resultado:</p>
+        <div class="buttons">
+          <button
+            @click="changeVisibility"
+            class="buttons__item buttons__item--outline"
+            name="cancel"
+          >
+            Cancelar
+          </button>
+          <button
+            v-bind:class="
+              selectedScholarships.length
+                ? 'buttons__item buttons__item--yellow'
+                : 'buttons__item buttons__item--disabled'
+            "
+            @click="addFavorites"
+            name="add"
+          >
+            Adicionar bolsa(s)
+          </button>
         </div>
-        <div class="sort__left">
-          <p class="text--s">Ordenar por:</p>
-          <select class="select select--text text--s">
-            <option class="text--s">NOME DA FACULDADE</option>
-          </select>
-        </div>
-      </div>
-      <div class="results">
-        <NewScholarshipItem
-          :key="scholarship.id"
-          v-for="scholarship in filteredScholarships"
-          :item="scholarship"
-          v-on:selectItem="selectItem"
-        />
-      </div>
-      <div class="buttons">
-        <button
-          @click="changeVisibility"
-          class="buttons__item buttons__item--outline"
-          name="cancel"
-        >
-          Cancelar
-        </button>
-        <button
-          v-if="selectedScholarships.length === 0"
-          class="buttons__item buttons__item--disabled"
-          name="add"
-        >
-          Adicionar bolsa(s)
-        </button>
-        <button
-          v-else
-          @click="addFavorites"
-          class="buttons__item buttons__item--yellow"
-          name="add"
-        >
-          Adicionar bolsa(s)
-        </button>
       </div>
     </div>
-  </div>
+  </transition>
 </template>
 <style lang="scss" scoped>
 @import "./_newScholarship.scss";
@@ -246,6 +246,8 @@ export default {
       }
     },
     addFavorites() {
+      if (!this.selectedScholarships.length) return;
+
       this.$emit("addFavorites", [
         this.selectedScholarships,
         this.scholarships

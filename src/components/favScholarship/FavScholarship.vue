@@ -25,30 +25,13 @@
         </p>
       </div>
       <div class="filter">
-        <div
-          :class="
-            `filter__item ${this.semester === '' && 'filter__item--selected'}`
-          "
-          @click="filterFavorites('')"
-        >
+        <div v-bind:class="allSemester" @click="filterFavorites('')">
           <p class="text text--s">Todos os semetres</p>
         </div>
-        <div
-          :class="
-            `filter__item ${this.semester === '2019.2' &&
-              'filter__item--selected'} `
-          "
-          @click="filterFavorites('2019.2')"
-        >
+        <div v-bind:class="secondSemester" @click="filterFavorites('2019.2')">
           <p class="text text--s">2º semetre de 2019</p>
         </div>
-        <div
-          :class="
-            `filter__item ${this.semester === '2020.1' &&
-              'filter__item--selected'} `
-          "
-          @click="filterFavorites('2020.1')"
-        >
+        <div v-bind:class="firstSemester" @click="filterFavorites('2020.1')">
           <p class="text text--s">1º semetre de 2020</p>
         </div>
       </div>
@@ -63,7 +46,7 @@
             />
           </div>
           <div class="scholarships__new__info">
-            <h2 class="text text--lg">Adicionar curso</h2>
+            <h2 class="text text--lg">Adicionar bolsa</h2>
             <strong class="text text--xs"
               >Clique para adicionar bolsas de cursos do seu interesse</strong
             >
@@ -100,6 +83,26 @@ export default {
       filteredFavoriteScholarships: [],
       semester: ""
     };
+  },
+  computed: {
+    firstSemester: function() {
+      return {
+        filter__item: true,
+        "filter__item--selected": this.semester === "2020.1"
+      };
+    },
+    secondSemester: function() {
+      return {
+        filter__item: true,
+        "filter__item--selected": this.semester === "2019.2"
+      };
+    },
+    allSemester: function() {
+      return {
+        filter__item: true,
+        "filter__item--selected": !this.semester
+      };
+    }
   },
   mounted() {
     const cachedFavorites = JSON.parse(localStorage.getItem("favorites"));

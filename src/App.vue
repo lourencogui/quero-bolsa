@@ -23,6 +23,10 @@ body,
   height: 100%;
   background: "##fafaf9";
   color: $blackText;
+
+  @media (max-width: 768px) {
+    font-size: 118%;
+  }
 }
 </style>
 <style>

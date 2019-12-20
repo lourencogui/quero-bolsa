@@ -84,15 +84,22 @@
         }
 
         &--grow {
-          display: flex;
-          flex-direction: column;
+          display: none;
+
+          @include lg {
+            display: flex;
+            flex-direction: column;
+          }
         }
 
         &--wrap {
           @include lg {
             display: none;
           }
-          margin: 0.5rem 0;
+          margin: 0.5rem;
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
         }
       }
     }

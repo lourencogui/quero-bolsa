@@ -1,17 +1,6 @@
 @import "../../assets/styles/general";
 @import "../../assets/styles/mixins";
 
-.wrapper {
-  &__top {
-    height: 50%;
-    background: $secondaryBlue;
-  }
-
-  &__bottom {
-    height: 50%;
-  }
-}
-
 .footer {
   display: flex;
   flex-direction: column;
@@ -21,6 +10,15 @@
 
   @include lg {
     height: auto;
+  }
+
+  &__wrapper-top {
+    height: 50%;
+    background: $secondaryBlue;
+  }
+
+  &__wrapper-bottom {
+    height: 50%;
   }
 
   &__top {
@@ -41,67 +39,67 @@
       margin: 0 auto;
       padding: 1rem 4rem;
     }
+  }
 
-    &__box {
+  &__top-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 1rem 1.5rem;
+    width: 33.3%;
+    border: 2px solid $primaryBlue;
+
+    @include lg {
+      border: none;
+      flex-direction: row;
+      justify-content: flex-start;
+      width: auto;
+      padding: 1rem 0;
+    }
+
+    &--grow {
+      flex-direction: row;
+      border-top: none;
+      @include lg {
+        width: auto;
+      }
+      width: 100%;
+    }
+  }
+
+  &__info {
+    display: none;
+    flex-direction: column;
+    margin: 0 0.5rem;
+
+    @include lg {
       display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 1rem 1.5rem;
-      width: 33.3%;
-      border: 2px solid $primaryBlue;
+      align-items: flex-start;
+
+      & > p {
+        margin: 0.2rem 0;
+      }
+    }
+
+    &--grow {
+      display: none;
 
       @include lg {
-        border: none;
-        flex-direction: row;
-        justify-content: flex-start;
-        width: auto;
-        padding: 1rem 0;
-      }
-
-      &--grow {
-        flex-direction: row;
-        border-top: none;
-        @include lg {
-          width: auto;
-        }
-        width: 100%;
-      }
-
-      &__info {
-        display: none;
+        display: flex;
         flex-direction: column;
-        margin: 0 0.5rem;
-
-        @include lg {
-          display: flex;
-          align-items: flex-start;
-
-          & > p {
-            margin: 0.2rem 0;
-          }
-        }
-
-        &--grow {
-          display: none;
-
-          @include lg {
-            display: flex;
-            flex-direction: column;
-          }
-        }
-
-        &--wrap {
-          @include lg {
-            display: none;
-          }
-          margin: 0.5rem;
-          display: flex;
-          flex-direction: column;
-          align-items: flex-start;
-        }
       }
+    }
+
+    &--wrap {
+      @include lg {
+        display: none;
+      }
+      margin: 0.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
     }
   }
 

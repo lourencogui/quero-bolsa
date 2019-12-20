@@ -1,17 +1,18 @@
 <template>
   <transition name="fade">
-    <div key="modal" v-if="visible" class="container__modal">
+    <div key="modal" v-if="visible" class="container-modal">
       <div class="close" @click="changeVisibility()">
         <font-awesome-icon :icon="['fas', 'times']" color="#FFF" size="lg" />
       </div>
       <div class="modal">
-        <div class="title">
+        <div class="modal__title">
           <h2 class="text--lg text--dark">Adicionar bolsa</h2>
           <p class="text--s">Filtre e adicione as bolsas de seu interesse.</p>
         </div>
-        <div class="filter">
-          <div class="filter__top">
-            <div class="filter__top__item">
+
+        <div class="modal__filter">
+          <div class="modal__filter-top">
+            <div class="modal__filter-item">
               <label class="text--xs text--dark">SELECIONE SUA CIDADE</label>
               <select class="select" v-model="filterCity">
                 <option>Todos</option>
@@ -20,7 +21,7 @@
                 </option>
               </select>
             </div>
-            <div class="filter__top__item">
+            <div class="modal__filter-item">
               <label class="text--xs text--dark"
                 >SELECIONE O CURSO DE SUA PREFERÊNCIA</label
               >
@@ -32,15 +33,15 @@
               </select>
             </div>
           </div>
-          <div class="filter__bottom">
-            <div class="filter__bottom__type">
+          <div class="modal__filter-bottom">
+            <div class="modal__filter-type">
               <div>
                 <label class="text--xs text--dark"
                   >COMO VOCÊ QUER ESTUDAR?</label
                 >
               </div>
-              <div class="filter__bottom__type__options">
-                <div class="filter__bottom__type__options__checkbox">
+              <div class="modal__type-options">
+                <div class="modal__type-checkbox">
                   <input
                     class="checkbox"
                     type="checkbox"
@@ -49,7 +50,7 @@
                   />
                   <label for="chk-presential" class="text--s">Presencial</label>
                 </div>
-                <div class="filter__bottom__type__options__checkbox">
+                <div class="modal__type-checkbox">
                   <input
                     class="checkbox"
                     type="checkbox"
@@ -60,8 +61,8 @@
                 </div>
               </div>
             </div>
-            <div class="filter__bottom__price">
-              <div class="filter__bottom__price__options">
+            <div class="modal__filter-price">
+              <div class="modal__price-options">
                 <p class="text--xs text--dark">ATÉ QUANTO PODE PAGAR?</p>
                 <p class="text--xs">R$ 10.000</p>
               </div>
@@ -78,18 +79,20 @@
             </div>
           </div>
         </div>
-        <div class="sort">
-          <div class="sort__right">
+
+        <div class="modal__sort">
+          <div class="modal__sort-right">
             <p class="text--s">Resultado:</p>
           </div>
-          <div class="sort__left">
+          <div class="modal__sort-left">
             <p class="text--s">Ordenar por:</p>
             <select class="select select--text text--s">
               <option class="text--s">NOME DA FACULDADE</option>
             </select>
           </div>
         </div>
-        <div class="results">
+
+        <div class="modal__results">
           <NewScholarshipItem
             :key="scholarship.id"
             v-for="scholarship in filteredScholarships"
@@ -97,10 +100,10 @@
             v-on:selectItem="selectItem"
           />
         </div>
-        <div class="buttons">
+        <div class="modal__buttons">
           <button
             @click="changeVisibility"
-            class="buttons__item buttons__item--outline"
+            class="modal__button modal__button--outline"
             name="cancel"
           >
             Cancelar
@@ -108,8 +111,8 @@
           <button
             v-bind:class="
               selectedScholarships.length
-                ? 'buttons__item buttons__item--yellow'
-                : 'buttons__item buttons__item--disabled'
+                ? 'modal__button modal__button--yellow'
+                : 'modal__button modal__button--disabled'
             "
             @click="addFavorites"
             name="add"

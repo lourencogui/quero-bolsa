@@ -4,22 +4,24 @@
       <div class="university__item" @click="selectItem(item.id)">
         <input class="checkbox" type="checkbox" />
       </div>
-      <div class="university__item university__item--logo">
+      <div class="university__item university__logo">
         <img :src="item.university.logo_url" />
       </div>
-      <div class="university__item university__item--block">
-        <div class="item__course">
+      <div class="university__item university__info">
+        <div class="university__course">
           <p class="text text--s text--secondary">{{ item.course.name }}</p>
           <p class="text text--xs">{{ item.course.level }}</p>
         </div>
-        <div class="item__price">
+        <div>
           <p class="text text--s">
             Bolsa de
-            <span
-              class="text text--s text--green text--bold"
-            >{{ item.discount_percentage }}%</span>
+            <span class="text text--s text--green text--bold"
+              >{{ item.discount_percentage }}%</span
+            >
           </p>
-          <p class="text text--s text--green text--bold">R$ {{ item.price_with_discount }}/mês</p>
+          <p class="text text--s text--green text--bold">
+            R$ {{ item.price_with_discount }}/mês
+          </p>
         </div>
       </div>
     </div>

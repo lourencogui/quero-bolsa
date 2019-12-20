@@ -40,33 +40,33 @@
     @include lg {
       justify-content: space-between;
     }
+  }
 
-    &--block {
-      display: flex;
-      flex-direction: column;
-      flex-grow: 1;
+  &__info {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
 
-      @include lg {
-        flex-direction: row;
-      }
-    }
-
-    &--logo {
-      width: 7rem;
-      img {
-        max-width: 5rem;
-        max-height: 2.5rem;
-      }
+    @include lg {
+      flex-direction: row;
     }
   }
-}
 
-.item__course {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 0.5rem 0;
-  @include lg {
-    padding: 0;
+  &__logo {
+    width: 7rem;
+    img {
+      max-width: 5rem;
+      max-height: 2.5rem;
+    }
+  }
+
+  &__course {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0.5rem 0;
+    @include lg {
+      padding: 0;
+    }
   }
 }

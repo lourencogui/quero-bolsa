@@ -29,110 +29,112 @@
     align-items: center;
     text-align: center;
     width: 100%;
+  }
 
-    &__logo {
-      height: 6rem;
-      display: flex;
-      align-items: center;
-      &--img {
-        max-height: 5rem;
-        max-width: 6rem;
-      }
-      padding: 1rem 0;
+  &__logo {
+    height: 6rem;
+    display: flex;
+    align-items: center;
+
+    padding: 1rem 0;
+  }
+
+  &__logo-img {
+    max-height: 5rem;
+    max-width: 6rem;
+  }
+
+  &__description {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+  }
+
+  &__rating {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem 0;
+
+    & > p {
+      margin-right: 0.5rem;
     }
+  }
 
-    &__description {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-around;
-
-      &__rating {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: center;
-        padding: 0.5rem 0;
-
-        & > p {
-          margin-right: 0.5rem;
-        }
-      }
-    }
-
-    &__period {
-      text-align: center;
+  &__period {
+    text-align: center;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    &::before,
+    &::after {
+      content: "";
+      height: 0.2rem;
       width: 100%;
-      display: flex;
-      flex-direction: column;
-      &::before,
-      &::after {
-        content: "";
-        height: 0.2rem;
-        width: 100%;
-        background: $secondaryGray;
-        margin: 1rem 0;
-
-        @include lg {
-          margin: 0.5rem 0;
-        }
-      }
-
-      & > h2 {
-        margin-bottom: 1rem;
-      }
-    }
-
-    &__price {
-      display: flex;
-      flex-direction: column;
-      text-align: center;
-
-      &__month {
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: flex-end;
-        margin: 0.5rem 0;
-
-        & > p {
-          margin-left: 0.1rem;
-          text-align: center;
-        }
-      }
-    }
-
-    &__options {
-      display: flex;
-      flex-direction: row;
-      justify-content: center;
-      width: 100%;
+      background: $secondaryGray;
       margin: 1rem 0;
 
-      &__button {
-        align-items: center;
-        height: 2rem;
-        // padding: 0rem 1em;
-        width: 100%;
-        border-radius: 3px;
-        &--outline {
-          background: transparent;
-          border: 2px solid $primaryBlue;
-          flex: 1;
-          margin-right: 0.5rem;
-        }
-
-        &--yellow {
-          flex: 2;
-          background: $primaryYellow;
-          border: 2px solid $secondaryYellow;
-        }
-
-        &--disabled {
-          flex: 2;
-          background: $primaryGray;
-          border: 2px solid $primaryGray;
-        }
+      @include lg {
+        margin: 0.5rem 0;
       }
+    }
+
+    & > h2 {
+      margin-bottom: 1rem;
+    }
+  }
+
+  &__price-full {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  &__price-month {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-end;
+    margin: 0.5rem 0;
+
+    & > p {
+      margin-left: 0.1rem;
+      text-align: center;
+    }
+  }
+
+  &__options {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+    margin: 1rem 0;
+  }
+
+  &__button {
+    align-items: center;
+    height: 2rem;
+    width: 100%;
+    border-radius: 3px;
+
+    &--outline {
+      background: transparent;
+      border: 2px solid $primaryBlue;
+      flex: 1;
+      margin-right: 0.5rem;
+    }
+
+    &--yellow {
+      flex: 2;
+      background: $primaryYellow;
+      border: 2px solid $secondaryYellow;
+    }
+
+    &--disabled {
+      flex: 2;
+      background: $primaryGray;
+      border: 2px solid $primaryGray;
     }
   }
 }

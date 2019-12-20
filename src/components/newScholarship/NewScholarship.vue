@@ -154,6 +154,7 @@ export default {
     };
   },
   mounted() {
+    this.selectedScholarships = [];
     axios
       .get("https://testapi.io/api/redealumni/scholarships")
       .then(({ data }) => {

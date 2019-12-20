@@ -1,16 +1,13 @@
 <template>
   <div class="scholarship">
     <div class="scholarship__university">
-      <i class="scholarship__university__logo">
-        <img
-          class="scholarship__university__logo--img"
-          :src="item.university.logo_url"
-        />
+      <i class="scholarship__logo">
+        <img class="scholarship__logo-img" :src="item.university.logo_url" />
       </i>
-      <div class="scholarship__university__description">
+      <div class="scholarship__description">
         <h2 class="text--m">{{ item.university.name }}</h2>
         <strong class="text--primary text--s">{{ item.course.name }}</strong>
-        <div class="scholarship__university__description__rating">
+        <div class="scholarship__rating">
           <p class="text text--s">{{ item.university.score }}</p>
           <star-rating
             read-only
@@ -21,26 +18,29 @@
         </div>
       </div>
     </div>
-    <div class="scholarship__university__period">
+
+    <div class="scholarship__period">
       <h2 class="text--m">{{ item.course.kind }} - {{ item.course.shift }}</h2>
       <strong class="text--xs"
         >Inicio das aulas em: {{ item.start_date }}</strong
       >
     </div>
-    <div class="scholarship__university__price">
+
+    <div class="scholarship__price-full">
       <h2 class="text--s">Mensalidade com o Quero Bolsa:</h2>
       <strike class="text--s">RS {{ item.full_price }}</strike>
-      <div class="scholarship__university__price__month">
+      <div class="scholarship__price-month">
         <strong class="text--green text--m"
           >RS {{ item.price_with_discount }}</strong
         >
         <p class="text--s">/mes</p>
       </div>
     </div>
-    <div class="scholarship__university__options">
+
+    <div class="scholarship__options">
       <button
         @click="removeFavorite(item.id)"
-        class="scholarship__university__options__button scholarship__university__options__button--outline"
+        class="scholarship__button scholarship__button--outline"
         name="button"
       >
         Excluir
@@ -48,7 +48,7 @@
       <button
         key="scholarship-details"
         v-if="item.enabled"
-        class="scholarship__university__options__button scholarship__university__options__button--yellow"
+        class="scholarship__button scholarship__button--yellow"
         name="button"
       >
         Ver oferta
@@ -56,7 +56,7 @@
       <button
         key="scholarship-details"
         v-else
-        class="scholarship__university__options__button scholarship__university__options__button--disabled"
+        class="scholarship__button scholarship__button--disabled"
         name="button"
         disabled
       >

@@ -152,14 +152,14 @@
     @include lg {
       width: 18rem;
     }
+  }
 
-    &__info {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      margin: 2rem 0;
-    }
+  &__new-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: 2rem 0;
   }
 }

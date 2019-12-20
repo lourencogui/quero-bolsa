@@ -24,6 +24,7 @@
           atualizações com as melhores ofertas disponíveis
         </p>
       </div>
+
       <div class="filter">
         <div v-bind:class="allSemester" @click="filterFavorites('')">
           <p class="text text--s">Todos os semetres</p>
@@ -45,7 +46,7 @@
               size="3x"
             />
           </div>
-          <div class="scholarships__new__info">
+          <div class="scholarships__new-info">
             <h2 class="text text--lg">Adicionar bolsa</h2>
             <strong class="text text--xs"
               >Clique para adicionar bolsas de cursos do seu interesse</strong
@@ -134,6 +135,7 @@ export default {
         "favorites",
         JSON.stringify(this.favoriteScholarships)
       );
+      this.$refs.newScholarship.selectedScholarships = [];
       this.$refs.newScholarship.changeVisibility();
     },
     removeFavorite(id) {

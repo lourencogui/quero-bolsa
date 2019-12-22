@@ -30,6 +30,8 @@ Vue.component("font-awesome-icon", FontAwesomeIcon);
 
 Vue.config.productionTip = false;
 
+import "vue-slider-component/theme/antd.css";
+
 new Vue({
   store,
   render: function (h) {

@@ -100,6 +100,7 @@
             v-on:selectItem="selectItem"
           />
         </div>
+        
         <div class="modal__buttons">
           <button
             @click="changeVisibility"
@@ -132,8 +133,8 @@
 import NewScholarshipItem from "./newScholarshipItem/NewScholarshipItem.vue";
 import VueSlider from "vue-slider-component";
 import axios from "axios";
-import { sortArray } from "../../assets/utils";
-import "vue-slider-component/theme/antd.css";
+import { sortArr } from "../../assets/utils";
+// import "vue-slider-component/theme/antd.css";
 export default {
   name: "newScholarship",
   components: {
@@ -165,7 +166,6 @@ export default {
           id: index,
           ...item
         }));
-        console.log(allWithId);
         this.setScholarships(allWithId);
       });
   },
@@ -191,7 +191,7 @@ export default {
       this.visible = !this.visible;
     },
     setScholarships(scholarships) {
-      this.scholarships = sortArray(scholarships, "university.name");
+      this.scholarships = sortArr(scholarships, "university.name");
       this.filteredScholarships = this.scholarships;
       this.cities = [...new Set(scholarships.map(item => item.campus.city))];
       this.courses = [...new Set(scholarships.map(item => item.course.name))];

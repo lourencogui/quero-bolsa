@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FavScholarship component render properly 1`] = `
+<div class="wrapper">
+  <div class="container">
+    <div class="breadcrumb">
+      <div class="breadcrumb__item"><a class="breadcrumb__text text--s text--secondary text--bold">Home</a></div>
+      <div class="breadcrumb__item"><a class="breadcrumb__text text--s text--secondary text--bold">Minha conta</a></div>
+      <div class="breadcrumb__item breadcrumb__item--selected"><a class="breadcrumb__text text--s">Bolsas favoritas</a></div>
+    </div>
+    <div class="page-info">
+      <h2 class="text text--xl">Bolsas Favoritas</h2>
+      <p class="text text--s text--lightWeight">
+        Adicione bolsas de cursos e faculdades do seu interesse e receba
+        atualizações com as melhores ofertas disponíveis
+      </p>
+    </div>
+    <div class="filter">
+      <div class="filter__item filter__item--selected">
+        <p class="text text--s">Todos os semetres</p>
+      </div>
+      <div class="filter__item">
+        <p class="text text--s">2º semetre de 2019</p>
+      </div>
+      <div class="filter__item">
+        <p class="text text--s">1º semetre de 2020</p>
+      </div>
+    </div>
+    <div class="scholarships">
+      <div class="scholarships__new">
+        <div>
+          <!---->
+        </div>
+        <div class="scholarships__new-info">
+          <h2 class="text text--lg">Adicionar bolsa</h2> <strong class="text text--xs">Clique para adicionar bolsas de cursos do seu interesse</strong>
+        </div>
+      </div>
+    </div>
+  </div>
+  <newscholarship-stub></newscholarship-stub>
+</div>
+`;

@@ -1,8 +1,8 @@
-export const sortArray = (arr, prop) => {
+export const sortArr = (arr, prop) => {
   prop = prop.split(".");
   var len = prop.length;
 
-  arr.sort(function(a, b) {
+  arr.sort(function (a, b) {
     var i = 0;
     while (i < len) {
       a = a[prop[i]];
@@ -18,4 +18,4 @@ export const sortArray = (arr, prop) => {
     }
   });
   return arr;
-}
+};

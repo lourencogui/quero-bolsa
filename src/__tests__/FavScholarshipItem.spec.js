@@ -1,5 +1,5 @@
 import { mount } from "@vue/test-utils";
-import FavScholarshipItem from "../components/favScholarship/components/FavScholarshipItem/FavScholarshipItem";
+import FavScholarshipItem from "../components/FavScholarshipItem/FavScholarshipItem";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import StarRating from "vue-star-rating";
 

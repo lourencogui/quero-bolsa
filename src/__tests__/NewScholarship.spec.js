@@ -1,5 +1,5 @@
 import { shallowMount } from "@vue/test-utils";
-import NewScholarship from "../components/newScholarship/NewScholarship";
+import NewScholarship from "../components/NewScholarship/NewScholarship.vue";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import "vue-slider-component/theme/antd.css";
 

@@ -1,0 +1,190 @@
+@import "../../assets/styles/general";
+@import "../../assets/styles/mixins";
+
+.header {
+  background-color: $white;
+
+  &__wrapper {
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+    justify-content: space-between;
+    @include lg {
+      max-width: 1700px;
+      margin: 0 auto;
+      padding: 0.7rem 4rem;
+      height: auto;
+    }
+    align-items: center;
+    height: 5rem;
+  }
+
+  &__left {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__how-it-works {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-right: 0 10rem;
+
+    &::after {
+      margin: 0.5rem;
+      content: "Ajuda";
+      color: $secondaryBlue;
+    }
+
+    @include lg {
+      flex-direction: row;
+      &::after {
+        content: "";
+      }
+    }
+
+    .text {
+      display: none;
+      margin: 0 0.5rem;
+
+      @include lg {
+        display: block;
+      }
+    }
+  }
+
+  &__contact {
+    display: none;
+    margin: 0 1rem;
+
+    @include lg {
+      display: flex;
+      flex-direction: row;
+      &::before {
+        content: "";
+        height: 30px;
+        width: 3px;
+        background: $secondaryGray;
+        margin-right: 2rem;
+      }
+    }
+  }
+
+  &__number {
+    display: flex;
+    flex-direction: column;
+    margin: 0 0.5rem;
+  }
+
+  &__logo {
+    @include lg {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+    }
+  }
+
+  &__img {
+    height: 2.5rem;
+  }
+
+  &__account {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    &::after {
+      margin: 0.5rem;
+      color: $secondaryBlue;
+      content: "Conta";
+    }
+
+    @include lg {
+      flex-direction: row;
+      flex: 1;
+      justify-content: flex-end;
+      &::after {
+        content: "";
+      }
+    }
+
+    .text {
+      display: none;
+      margin: 0 0.5rem;
+      @include lg {
+        display: block;
+      }
+    }
+  }
+
+  &__nav {
+    background-color: $primaryBlue;
+    @include lg {
+      max-width: 1700px;
+      margin: 0 auto;
+      padding: 0 4rem;
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    list-style-type: none;
+
+    @include lg {
+      justify-content: flex-start;
+    }
+  }
+
+  &__item {
+    display: none;
+    height: 2rem;
+
+    @include lg {
+      display: flex;
+    }
+
+    &:first-child {
+      display: flex;
+    }
+
+    &--mobile {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      @include lg {
+        display: none;
+      }
+    }
+
+    &--active {
+      @include lg {
+        background: $secondaryBlue;
+      }
+    }
+  }
+
+  &__page {
+    align-self: center;
+    color: $white;
+    text-decoration: none;
+    padding: 0 1rem;
+
+    &--fixed {
+      @include lg {
+        padding: 0;
+        padding-right: 1rem;
+      }
+    }
+  }
+
+  &__nav-wrapper {
+    background: $primaryBlue;
+  }
+}

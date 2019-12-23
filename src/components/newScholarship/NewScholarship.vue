@@ -100,7 +100,7 @@
             v-on:selectItem="selectItem"
           />
         </div>
-        
+
         <div class="modal__buttons">
           <button
             @click="changeVisibility"
@@ -130,13 +130,13 @@
 </style>
 
 <script>
-import NewScholarshipItem from "./newScholarshipItem/NewScholarshipItem.vue";
+import NewScholarshipItem from "../NewScholarshipItem/NewScholarshipItem";
 import VueSlider from "vue-slider-component";
 import axios from "axios";
 import { sortArr } from "../../assets/utils";
-// import "vue-slider-component/theme/antd.css";
+
 export default {
-  name: "newScholarship",
+  name: "NewScholarship",
   components: {
     NewScholarshipItem,
     VueSlider

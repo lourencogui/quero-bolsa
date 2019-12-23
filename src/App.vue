@@ -33,9 +33,9 @@ body,
 </style>
 
 <script>
-import TopSection from "./components/topSection/TopSection.vue";
-import BottomSection from "./components/bottomSection/BottomSection.vue";
-import FavScholarship from "./components/favScholarship/FavScholarship.vue";
+import TopSection from "./components/TopSection/TopSection.vue";
+import BottomSection from "./components/BottomSection/BottomSection.vue";
+import FavScholarship from "./components/FavScholarship/FavScholarship.vue";
 
 export default {
   name: "app",

@@ -69,8 +69,8 @@
 </style>
 
 <script>
-import FavScholarshipItem from "./components/FavScholarshipItem/FavScholarshipItem.vue";
-import NewScholarship from "../newScholarship/NewScholarship.vue";
+import FavScholarshipItem from "../FavScholarshipItem/FavScholarshipItem";
+import NewScholarship from "../NewScholarship/NewScholarship.vue";
 
 export default {
   name: "favScholarship",

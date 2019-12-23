@@ -196,6 +196,8 @@
     justify-content: center;
     @include lg {
       justify-content: flex-end;
+      width: 50%;
+      align-self: flex-end;
     }
     border-radius: 3px;
   }

@@ -68,10 +68,9 @@
               </div>
               <div>
                 <VueSlider
-                  :dotSize="25"
-                  :max="10000"
-                  :interval="50"
-                  :value="10000"
+                  :max="filterMaxValue"
+                  :min="filterMinValue"
+                  :interval="1"
                   :lazy="true"
                   v-model="filterPrice"
                 />
@@ -148,17 +147,20 @@ export default {
       filteredScholarships: [],
       selectedScholarships: [],
       favoriteScholarships: [],
+      filterMaxValue: 10000,
+      filterMinValue: 1,
       cities: [],
       courses: [],
       filterEad: false,
       filterPresential: false,
       filterCity: "TODOS",
       filterCourse: "TODOS",
-      filterPrice: 10000
+      filterPrice: 1
     };
   },
   mounted() {
     this.selectedScholarships = [];
+
     axios
       .get("https://testapi.io/api/redealumni/scholarships")
       .then(({ data }) => {
@@ -167,6 +169,10 @@ export default {
           ...item
         }));
         this.setScholarships(allWithId);
+        const prices = this.scholarships.map(item => item.price_with_discount);
+        this.filterMaxValue = Math.ceil(Math.max(...prices)) + 1;
+        this.filterMinValue = Math.floor(Math.min(...prices));
+        this.filterPrice = this.filterMaxValue;
       });
   },
   watch: {

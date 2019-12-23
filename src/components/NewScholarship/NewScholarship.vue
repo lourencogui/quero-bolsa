@@ -1,7 +1,7 @@
 <template>
   <transition name="fade">
     <div key="modal" v-if="visible" class="container-modal">
-      <div class="close" @click="changeVisibility()">
+      <div class="close" v-on:click="changeVisibility()">
         <font-awesome-icon :icon="['fas', 'times']" color="#FFF" size="lg" />
       </div>
       <div class="modal">
@@ -103,7 +103,7 @@
 
         <div class="modal__buttons">
           <button
-            @click="changeVisibility"
+            v-on:click="changeVisibility"
             class="modal__button modal__button--outline"
             name="cancel"
           >
@@ -115,7 +115,7 @@
                 ? 'modal__button modal__button--yellow'
                 : 'modal__button modal__button--disabled'
             "
-            @click="addFavorites"
+            v-on:click="addFavorites"
             name="add"
           >
             Adicionar bolsa(s)

@@ -18,7 +18,7 @@
 
   @include lg {
     width: 19rem;
-    margin: 0 1rem;
+    margin: 1rem;
     height: 24rem;
   }
 
@@ -70,7 +70,7 @@
     &::before,
     &::after {
       content: "";
-      height: 0.2rem;
+      height: 2px;
       width: 100%;
       background: $secondaryGray;
       margin: 1rem 0;
@@ -117,6 +117,7 @@
     height: 2rem;
     width: 100%;
     border-radius: 3px;
+    cursor: pointer;
 
     &--outline {
       background: transparent;
@@ -135,6 +136,7 @@
       flex: 2;
       background: $primaryGray;
       border: 2px solid $primaryGray;
+      cursor: not-allowed;
     }
   }
 }

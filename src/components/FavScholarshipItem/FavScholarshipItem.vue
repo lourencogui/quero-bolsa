@@ -39,7 +39,7 @@
 
     <div class="scholarship__options">
       <button
-        @click="removeFavorite(item.id)"
+        v-on:click="removeFavorite(item.id)"
         class="scholarship__button scholarship__button--outline"
         name="button"
       >

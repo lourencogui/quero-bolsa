@@ -26,19 +26,25 @@
       </div>
 
       <div class="filter">
-        <div v-bind:class="allSemester" @click="filterFavorites('')">
+        <div v-bind:class="allSemester" v-on:click="filterFavorites('')">
           <p class="text text--s">Todos os semetres</p>
         </div>
-        <div v-bind:class="secondSemester" @click="filterFavorites('2019.2')">
+        <div
+          v-bind:class="secondSemester"
+          v-on:click="filterFavorites('2019.2')"
+        >
           <p class="text text--s">2º semetre de 2019</p>
         </div>
-        <div v-bind:class="firstSemester" @click="filterFavorites('2020.1')">
+        <div
+          v-bind:class="firstSemester"
+          v-on:click="filterFavorites('2020.1')"
+        >
           <p class="text text--s">1º semetre de 2020</p>
         </div>
       </div>
 
       <div class="scholarships">
-        <div class="scholarships__new" @click="openNewScholarship">
+        <div class="scholarships__new" v-on:click="openNewScholarship">
           <div>
             <font-awesome-icon
               :icon="['fas', 'plus-circle']"
@@ -131,10 +137,7 @@ export default {
         }
       });
       this.filteredFavoriteScholarships = this.favoriteScholarships;
-      localStorage.setItem(
-        "favorites",
-        JSON.stringify(this.favoriteScholarships)
-      );
+      this.updateLocalStorage();
       this.$refs.newScholarship.selectedScholarships = [];
       this.$refs.newScholarship.changeVisibility();
     },
@@ -145,6 +148,9 @@ export default {
       this.filteredFavoriteScholarships = this.filteredFavoriteScholarships.filter(
         item => item.id !== id
       );
+      this.updateLocalStorage();
+    },
+    updateLocalStorage() {
       localStorage.setItem(
         "favorites",
         JSON.stringify(this.favoriteScholarships)

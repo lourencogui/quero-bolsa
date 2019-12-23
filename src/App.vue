@@ -20,7 +20,7 @@ html,
 body,
 #app {
   overflow-x: hidden;
-  height: 100%;
+  height: 100vh;
   background: "##fafaf9";
   color: $blackText;
 }

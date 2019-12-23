@@ -1,7 +1,7 @@
 <template>
   <div class="university__container">
     <div class="university">
-      <div class="university__item" @click="selectItem(item.id)">
+      <div class="university__item" v-on:click="selectItem(item.id)">
         <input class="checkbox" type="checkbox" />
       </div>
       <div class="university__item university__logo">

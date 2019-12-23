@@ -175,8 +175,6 @@
     flex-direction: column;
     justify-content: flex-start;
     width: 100%;
-    // max-height: 15rem;
-    // overflow-y: auto;
     margin: 0.5rem 0;
 
     @include lg {
@@ -199,12 +197,19 @@
     @include lg {
       justify-content: flex-end;
     }
-    // margin-top: 1rem;
-    // height: 2.5rem;
     border-radius: 3px;
   }
 
   &__button {
+    cursor: pointer;
+    border-radius: 3px;
+    padding: 0 1rem;
+    height: 2.5rem;
+    @include lg {
+      flex: none;
+      padding: 0 1rem;
+    }
+
     &--outline {
       background: transparent;
       border: 2px solid $primaryBlue;
@@ -222,14 +227,7 @@
       flex: 2;
       background: $secondaryGray;
       border: 2px solid $secondaryGray;
-    }
-
-    border-radius: 3px;
-    padding: 0 1rem;
-    height: 2.5rem;
-    @include lg {
-      flex: none;
-      padding: 0 1rem;
+      cursor: not-allowed;
     }
   }
 }
